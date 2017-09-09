@@ -4,8 +4,6 @@ This is the bare minimum template project to easily get up and running with [Sca
 
 # Install
 
-#### 1. Install Global Dependencies
-
 1. Install [`NodeJs`](https://nodejs.org)
 
 2. Install global `npm` dependencies (**as root/admin**):
