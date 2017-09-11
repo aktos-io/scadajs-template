@@ -3,5 +3,6 @@ DIR=$(dirname "$(readlink -f "$0")")
 
 $DIR/pull.sh
 cd scada.js
+./update.sh
 ./install-modules.sh
-gulp --webapp main --production
+gulp --webapp pug-ls --production
