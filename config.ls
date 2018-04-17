@@ -1,2 +1,2 @@
-export webserver-port = 4001
-export dcs-port = 4002
+export webserver-port = 4011
+export dcs-port = 4012
