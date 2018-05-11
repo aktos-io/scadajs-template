@@ -2,6 +2,10 @@
 
 This is the bare minimum template project to easily get up and running with [ScadaJS](https://github.com/aktos-io/scada.js).
 
+# Live Demo 
+
+https://aktos.io/scadajs-template
+
 # Install
 
 1. Install [`NodeJs`](https://nodejs.org)
