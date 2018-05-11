@@ -1,12 +1,17 @@
 <aktos-dcs/> <!-- initialize dcs -->
 <sync value="{{name}}" sync-route="@mydevice.hello.name" />
 <sync value="{{x}}" sync-route="@mydevice.hello.there" />
+<sync value="{{y}}" sync-route="@mydevice.hello.there" />
 <!-- this is all you need to do to setup the realtime connection -->
 <!-- rest is the pure Ractive template you already know -->
 
 <h2>hello {{name}}!</h2>
 <input value="{{name}}" />
 
-<h3>Slider/progress</h3>
+<h3>Slider/progress (@mydevice.hello.there)</h3>
+<p>Value: {{x}}</p>
 <slider inline value="{{x}}" />
 <progress type="circle" value="{{x}}" />
+
+<h3>Separate sync component (sync with @mydevice.hello.there)</h3>
+<p>Value: {{y}}</p>
