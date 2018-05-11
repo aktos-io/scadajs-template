@@ -24,7 +24,7 @@ db = new dcs.AuthDB users
 app = express!
 http = require \http .Server app
 app.use "/", express.static path.resolve "../scada.js/build/main"
-http.listen webserver-port, ->
+http.listen webserver-port, "0.0.0.0", ->
     console.log "webserver is listening on *:#{webserver-port}"
 
 new browser.DcsSocketIOServer http, {db}
