@@ -4,22 +4,21 @@ require! <[ path express dcs dcs/browser ]>
 require! '../config': {webserver-port, dcs-port}
 
 # Create an in-memory authentication database
-users = dcs.as-docs do
+require! 'dcs/src/auth-helpers': {hash-passwd}
+
+users =
     'public':
-        # hash algorithm is: sha512 =>
-        #   `echo -n "public" | sha512sum`
-        passwd-hash: "d32997e9747b65a3ecf65b82533a4c843c4e
-            16dd30cf371e8c81ab60a341de00051da422d41ff29c55
-            695f233a1e06fac8b79aeb0a4d91ae5d3d18c8e09b8c73"
-        roles:
-          \guest-permissions
+        passwd-hash: hash-passwd "public"
+        routes:
+            \@mydevice.**
+        permissions:
+            'something'
 
-permissions = dcs.as-docs do
-    'guest-permissions':
-        rw:
-            \hello.**
+    'mydevice':
+        passwd-hash: hash-passwd "1234"
 
-db = new dcs.AuthDB users, permissions
+
+db = new dcs.AuthDB users
 
 # Create a webserver and a SocketIO bridge
 app = express!

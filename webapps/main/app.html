@@ -1,6 +1,6 @@
 <aktos-dcs/> <!-- initialize dcs -->
-<sync value="{{name}}" sync-topic="hello.name" />
-<sync value="{{x}}" sync-topic="hello.there" />
+<sync value="{{name}}" sync-route="@mydevice.hello.name" />
+<sync value="{{x}}" sync-route="@mydevice.hello.there" />
 <!-- this is all you need to do to setup the realtime connection -->
 <!-- rest is the pure Ractive template you already know -->
 

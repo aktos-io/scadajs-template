@@ -4,7 +4,11 @@ require! 'dcs/proxy-actors': {create-io-proxies}
 require! 'dcs/drivers/simulator': {IoSimulatorDriver}
 require! '../config'
 
+user = "mydevice"
+password = "1234"
+
 create-io-proxies do
+    node: user
     drivers: {IoSimulatorDriver}
     devices:
         hello:
@@ -13,4 +17,4 @@ create-io-proxies do
                 there: {}
                 name: {}
 
-new DcsTcpClient port: config.dcs-port .login {user: "public", password: "public"}
+new DcsTcpClient port: config.dcs-port .login {user, password}
