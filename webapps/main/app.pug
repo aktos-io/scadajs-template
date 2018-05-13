@@ -1,0 +1,110 @@
+// setup realtime layer 
+aktos-dcs 
+// sync values with routes 
+sync(value="{{name}}" route="@mydevice.hello.name")
+sync(value="{{x}}" route="@mydevice.hello.there" fps="20")
+sync(value="{{y}}" route="@mydevice.hello.there")
+sync(value="{{z}}" route="@mydevice.foo.bar")
+//
+    This is all you need to do to setup the realtime connection between nodes.
+    Rest is the pure Ractive template that you already know. 
+    
+    SemanticUI is supported out of the box.
+
+// Setup global logger
+logger
+
+// Description 
+// ------------------------------------------
+- var gh="https://github.com/aktos-io"
+- var webappAddr= gh + "/scadajs-template/blob/master/webapps/main/app.html"
+- var sourceAddr= gh + "/scadajs-template"
+- var demoAddr="https://aktos.io/st"
+- var scadajsAddr= gh + "/scada.js"
+- var issues=sourceAddr + "/issues"
+
+.ui.basic.segment 
+    .ui.big.teal.message 
+        h1.ui.big.header Goals 
+        p.
+            If you look at this page and its source code and say "Yes, I would use
+            #[a(newtab href=scadajsAddr): icon.github ScadaJS] in my next 
+            realtime webapp project", then this page achieves its goal.
+        p.
+            If you are confused about anything, rise an issue #[a(newtab href=issues) here].
+
+    .ui.message
+        h3.ui.header What to expect from this template:
+        ol
+            li Open this page (#[a(newtab href=demoAddr) https://aktos.io/st]) on multiple devices and see the changes are #[b propogated in realtime].
+            li Login as different users and check the authorization options.
+
+        p See the full source code at #[a(newtab href=sourceAddr): icon.github aktos-io/scadajs-template ].
+
+
+// Actual application code is below:
+// ----------------------------------
+
+.ui.grid
+    .ten.wide.centered.column 
+        h1.ui.top.attached.block.header
+            icon.wrench Realtime Changes 
+        .ui.bottom.attached.raised.segment
+            h2.ui.header Hello {{name}}!
+            .ui.input: input(value="{{name}}")
+
+            h3 Slider/Slider/progress (@mydevice.hello.there) @20fps
+            p Value: {{x}}
+            slider(inline value="{{x}}")
+            progress(type="circle" value="{{x}}")
+
+            h3 Separate sync component (sync with @mydevice.hello.there)
+            p Value: {{y}}
+            
+
+        h1.ui.top.attached.block.header
+            icon.lock Authorization 
+        .ui.attached.raised.segment
+            .ui.message 
+                ul
+                    li Logged in as #[.ui.large.orange.label {{@global.session.user}}]
+                    li Available Routes:
+                        ul 
+                            +each('@global.session.routes as route')
+                                li {{route}}
+                    li Available Permissions: 
+                        ul 
+                            +each('@global.session.permissions as permission')
+                                li {{permission}}
+            .ui.green.message            
+                p (use "myuser", "5678")
+
+            .ui.form 
+                .fields 
+                    .field 
+                        label Username 
+                        input(value="{{username}}")
+                    .field 
+                        label Password 
+                        input(value="{{password}}")
+                .fields
+                    .field 
+                        login-button.green(user="{{username}}" password="{{password}}") Login 
+                        logout-button.red Logout 
+                        
+        h1.ui.attached.header
+            icon.lock Authorized Area  
+        .ui.bottom.attachedraised.segment 
+            +iff('able("slider2.write")')
+                .ui.message.green You are allowed to move the slider. 
+            +else 
+                .ui.message.red You are not allowed to move the slider (you don't have "slider2.write" permission)
+            +endif
+            
+            slider(inline value="{{z}}" disabled="{{unable('slider2.write')}}")
+            
+            .ui.message.red 
+                p Here is the Hacked slider: 
+                slider(inline value="{{z}}" disabled="false")
+            
+div(style="min-height: 100px")

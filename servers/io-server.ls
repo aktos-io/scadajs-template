@@ -16,5 +16,9 @@ create-io-proxies do
             handles:
                 there: {}
                 name: {}
+        foo:
+            driver: 'IoSimulatorDriver'
+            handles:
+                bar: {}
 
 new DcsTcpClient port: config.dcs-port .login {user, password}
