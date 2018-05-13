@@ -24,10 +24,10 @@ router
 // Actual application code is below:
 // ----------------------------------
 .ui.menu 
-    a.item(href="#/home") Home 
+    a.item(href="#/") Home 
     a.item(href="#/page2") Page 2
 
-scene(name="home" default public)
+scene(default public)
     // sync values with routes 
     sync(value="{{name}}" route="@mydevice.hello.name")
     sync(value="{{x}}" route="@mydevice.hello.there" fps="20")
