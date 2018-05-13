@@ -5,7 +5,6 @@ require! '../config': {webserver-port, dcs-port}
 
 # Create an in-memory authentication database
 require! 'dcs/src/auth-helpers': {hash-passwd}
-
 users =
     'public':
         passwd-hash: hash-passwd "public"
@@ -13,9 +12,11 @@ users =
             \@mydevice.**
         permissions:
             'something'
+            'something-else'
 
     'mydevice':
         passwd-hash: hash-passwd "1234"
+# End of in-memory authentication database
 
 
 db = new dcs.AuthDB users
