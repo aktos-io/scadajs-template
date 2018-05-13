@@ -1,23 +1,33 @@
 <aktos-dcs/>
-<sync value="{{name}}" sync-route="@mydevice.hello.name" />
-<sync value="{{x}}" sync-route="@mydevice.hello.there" />
-<sync value="{{y}}" sync-route="@mydevice.hello.there" />
+<sync value="{{name}}" route="@mydevice.hello.name" />
+<sync value="{{x}}" route="@mydevice.hello.there" fps="20"/>
+<sync value="{{y}}" route="@mydevice.hello.there"/>
 <!--
         This is all you need to do to setup the realtime connection between nodes.
-        Rest is the pure Ractive template that you already know
+        Rest is the pure Ractive template that you already know. SemanticUI is
+        supported out of the box.
 -->
-
-<div class="ui segment">
-    <div class="ui large green message">
-        See the full source code at <a newtab href="https://github.com/aktos-io/scadajs-template"><i class="icon github" />Github: aktos.io/scadajs-template</a>.
-        This page's code is <a newtab href="https://github.com/aktos-io/scadajs-template/blob/master/webapps/main/app.html">here</a>.
+<div class="ui basic segment">
+    <div class="ui message">
+        <h3 class="ui header">What to expect:</h3>
+        <ol>
+            <li>Open this page on multiple devices and see the inputs are <b>propogated in realtime</b>.</li>
+            <li>See <b>how easy</b> to setup a <a newtab href="https://github.com/aktos-io/scadajs-template/blob/master/webapps/main/app.html">realtime webapp</a>.</li>
+        </ol>
+        <p>
+            See the full source code at <a newtab href="https://github.com/aktos-io/scadajs-template"><i class="icon github" />Github: aktos.io/scadajs-template</a>.
+            Shortcut address for this page is: <a newtab href="https://aktos.io/st">https://aktos.io/st</a>
+        </p>
     </div>
-    <h2 class="ui header block">Hello {{name}}!</h2>
+</div>
+<div class="ui raised segment">
+    <h1 class="ui large horizontal divider"><i class="wrench icon" />Realtime Test Application</h1>
+    <h2 class="ui header">Hello {{name}}!</h2>
     <div class="ui input">
         <input value="{{name}}" />
     </div>
 
-    <h3>Slider/progress (@mydevice.hello.there)</h3>
+    <h3>Slider/progress (@mydevice.hello.there) @20fps</h3>
     <p>Value: {{x}}</p>
     <slider inline value="{{x}}" />
     <progress type="circle" value="{{x}}" />
