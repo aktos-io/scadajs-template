@@ -5,7 +5,7 @@ aktos-dcs
 logger
 
 // Setup the router 
-router 
+router
 
 //
     Rest is the pure Ractive template that you already know.     
@@ -45,10 +45,18 @@ scene(default public)
                 If you are confused about anything, rise an issue #[a(newtab href=issues) here].
 
         .ui.message
-            h3.ui.header What to expect from this template:
+            h3.ui.header This project template answers:
             ol
-                li Open this page (#[a(newtab href=demoAddr) https://aktos.io/st]) on multiple devices and see the changes are #[b propagated in realtime].
-                li Login as different users and check the authorization options.
+                li How to propagate the changes between your devices in realtime
+                    ol 
+                        li Open this page (#[a(newtab href=demoAddr) https://aktos.io/st]) on multiple devices.
+                        li See the changes are #[b propagated in realtime].
+                li How to manage the authorization: 
+                    ol
+                        li Login as different users and check out the authorized area.
+                        li See the webapp code in order to understand the custom #[code Ractive.able()] helper
+                        li See the #[code users.ls] to understand how to manage the #[code routes] and #[code permissions].
+                li How to manage routing: Use #[code scene] and #[code router] components.
 
     .ui.grid
         .ten.wide.centered.column 
@@ -58,7 +66,7 @@ scene(default public)
                 h2.ui.header Hello {{name}}!
                 .ui.input: input(value="{{name}}")
 
-                h3 Slider/Slider/progress (@mydevice.hello.there) @20fps
+                h3 Slider (@mydevice.hello.there) @20fps
                 p Value: {{x}}
                 slider(inline value="{{x}}")
                 progress(type="circle" value="{{x}}")
