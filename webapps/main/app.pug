@@ -36,31 +36,32 @@ scene(default public)
     sync(value="{{z}}" route="@mydevice.foo.bar")
 
     .ui.basic.segment 
-        .ui.big.teal.message 
+        .ui.big.message 
             h1.ui.big.header Goals 
             p.
                 If you look at this page and #[a(newtab href=sourceAddr): icon.github its source code] and say "Yes, I would use
                 #[a(newtab href=scadajsAddr): icon.github ScadaJS] in my next 
                 realtime webapp project", then this page achieves its goal.
             p.
-                If you are confused about anything, rise an issue #[a(newtab href=issues) here].
-
-        .ui.message
-            h3.ui.header This project template answers:
-            ol
-                li How to propagate the changes between your devices in realtime
-                    ol 
-                        li Open this page (#[a(newtab href=demoAddr) https://aktos.io/st]) on multiple devices.
-                        li See the changes are #[b propagated in realtime].
-                li How to manage the authorization: 
-                    ol
-                        li Login as different users and check out the authorized area.
-                        li See the webapp code in order to understand the custom #[code Ractive.able()] helper
-                        li See the #[code users.ls] to understand how to manage the #[code routes] and #[code permissions].
-                li How to manage routing: Use #[code scene] and #[code router] components.
-
+                If you are confused about anything, rise an issue #[a(newtab href=issues): icon.bug here].
+                
     .ui.grid
         .ten.wide.centered.column 
+            .ui.message
+                h3.ui.header This project template answers:
+                ol
+                    li How to propagate the changes between your devices in realtime
+                        ol 
+                            li Open this page (#[a(newtab href=demoAddr) https://aktos.io/st]) on multiple devices.
+                            li See the changes are #[b propagated in realtime].
+                    li How to manage the authorization: 
+                        ol
+                            li Login as different users and check out the authorized area.
+                            li See the webapp code in order to understand the custom #[code Ractive.able()] helper
+                            li See the #[code users.ls] to understand how to manage the #[code routes] and #[code permissions].
+                    li How to manage routing: Use #[code scene] and #[code router] components.
+
+
             h1.ui.top.attached.block.header
                 icon.wrench Realtime Changes 
             .ui.bottom.attached.raised.segment
@@ -78,33 +79,37 @@ scene(default public)
             h1.ui.top.attached.block.header
                 icon.lock Authorization 
             .ui.attached.raised.segment
-                .ui.message 
-                    ul
-                        li Logged in as #[.ui.large.orange.label {{@global.session.user}}]
-                        li Available Routes:
-                            ul 
-                                +each('@global.session.routes as route')
-                                    li {{route}}
-                        li Available Permissions: 
-                            ul 
-                                +each('@global.session.permissions as permission')
-                                    li {{permission}}
-                .ui.green.message            
-                    p (use "myuser", "5678")
+                .ui.grid 
+                    .eight.wide.column
+                        .ui.form 
+                            .fields 
+                                .field 
+                                    label Username 
+                                    input(value="{{username}}")
+                                .field 
+                                    label Password 
+                                    input(value="{{password}}")
+                            .fields
+                                .field 
+                                    login-button.green(user="{{username}}" password="{{password}}") Login 
+                                    logout-button.red Logout 
 
-                .ui.form 
-                    .fields 
-                        .field 
-                            label Username 
-                            input(value="{{username}}")
-                        .field 
-                            label Password 
-                            input(value="{{password}}")
-                    .fields
-                        .field 
-                            login-button.green(user="{{username}}" password="{{password}}") Login 
-                            logout-button.red Logout 
-                            
+                    .eight.wide.column
+                        .ui.message 
+                            ul
+                                li Logged in as #[.ui.large.orange.label {{@global.session.user}}]
+                                li Available Routes:
+                                    ul 
+                                        +each('@global.session.routes as route')
+                                            li {{route}}
+                                li Available Permissions: 
+                                    ul 
+                                        +each('@global.session.permissions as permission')
+                                            li {{permission}}
+                        .ui.green.message            
+                            p (use "myuser", "5678")
+
+                                
             h1.ui.attached.header
                 icon.lock Authorized Area  
             .ui.bottom.attachedraised.segment 
