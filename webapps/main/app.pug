@@ -5,7 +5,7 @@ aktos-dcs
 logger
 
 // Setup the router 
-router
+router(offset="50")
 
 //
     Rest is the pure Ractive template that you already know.     
@@ -24,7 +24,7 @@ router
 
 // Actual application code is below:
 // ----------------------------------
-.ui.menu 
+.ui.menu.fixed
     a.item(href="#/") Home 
     a.item(href="#/page2") Page 2
 
@@ -35,97 +35,101 @@ scene(default public)
     sync(value="{{y}}" route="@mydevice.hello.there")
     sync(value="{{z}}" route="@mydevice.foo.bar")
 
-    .ui.basic.segment 
-        .ui.big.message 
-            h1.ui.big.header Goals 
-            p.
-                If you look at this page and #[a(newtab href=sourceAddr): icon.github its source code] and say "Yes, I would use
-                #[a(newtab href=scadajsAddr): icon.github ScadaJS] in my next 
-                realtime webapp project", then this page achieves its goal.
-            p.
-                If you are confused about anything, rise an issue #[a(newtab href=issues): icon.bug here].
+    .ui.container
+        .ui.basic.segment 
+            .ui.big.message(style="padding: 150px auto")
+                h1.ui.big.header ScadaJS Template 
+                .ui.p(style="font-size: 1.2em; margin: 2em;").
+                    This demo page will achieve its goal if you decide to give #[a(href=scadajsAddr): icon.github ScadaJS]
+                    a shot in your next realtime webapp project.
                 
-    .ui.grid
-        .ten.wide.centered.column 
-            .ui.message
-                h3.ui.header This project template answers:
-                ol
-                    li How to propagate the changes between your devices in realtime
-                        ol 
-                            li Open this page (#[a(newtab href=demoAddr) https://aktos.io/st]) on multiple devices.
-                            li See the changes are #[b propagated in realtime].
-                    li How to manage the authorization: 
-                        ol
-                            li Login as different users and check out the authorized area.
-                            li See the webapp code in order to understand the custom #[code Ractive.able()] helper
-                            li See the #[code users.ls] to understand how to manage the #[code routes] and #[code permissions].
-                    li How to manage routing: Use #[code scene] and #[code router] components.
-
-
-            h1.ui.top.attached.block.header
-                icon.wrench Realtime Changes 
-            .ui.bottom.attached.raised.segment
-                h2.ui.header Hello {{name}}!
-                .ui.input: input(value="{{name}}")
-
-                h3 Slider (@mydevice.hello.there) @20fps
-                p Value: {{x}}
-                slider(inline value="{{x}}")
-                progress(type="circle" value="{{x}}")
-
-                h3 Separate sync component (sync with @mydevice.hello.there)
-                p Value: {{y}}
+            .ui.p.
+                You can get the source code of this template webapp 
+                #[a(href=sourceAddr): icon.github here].
+                If you are confused about anything,  
+                #[a(href=issues): icon.bug rise an issue].
                 
-            h1.ui.top.attached.block.header
-                icon.lock Authorization 
-            .ui.attached.raised.segment
-                .ui.grid 
-                    .eight.wide.column
-                        .ui.form 
-                            .fields 
-                                .field 
-                                    label Username 
-                                    input(value="{{username}}")
-                                .field 
-                                    label Password 
-                                    input(value="{{password}}")
-                            .fields
-                                .field 
-                                    login-button.green(user="{{username}}" password="{{password}}") Login 
-                                    logout-button.red Logout 
+            h3.ui.header This project template answers:
+            ol
+                li How to propagate the changes between your devices in realtime
+                    ol 
+                        li Open this page (#[a(href=demoAddr) https://aktos.io/st]) on multiple devices.
+                        li See the changes are #[b propagated in realtime].
+                li How to manage the authorization: 
+                    ol
+                        li Login as different users and check out the authorized area.
+                        li See the webapp code in order to understand the custom #[code Ractive.able()] helper
+                        li See the #[code users.ls] to understand how to manage the #[code routes] and #[code permissions].
+                li How to manage routing: Use #[code scene] and #[code router] components.
 
-                    .eight.wide.column
-                        .ui.message 
-                            ul
-                                li Logged in as #[.ui.large.orange.label {{@global.session.user}}]
-                                li Available Routes:
-                                    ul 
-                                        +each('@global.session.routes as route')
-                                            li {{route}}
-                                li Available Permissions: 
-                                    ul 
-                                        +each('@global.session.permissions as permission')
-                                            li {{permission}}
-                        .ui.green.message            
-                            p (use "myuser", "5678")
 
-                                
-            h1.ui.attached.header
-                icon.lock Authorized Area  
-            .ui.bottom.attachedraised.segment 
-                +iff('able("slider2.write")')
-                    .ui.message.green You are allowed to move the slider. 
-                +else 
-                    .ui.message.red You are not allowed to move the slider (you don't have "slider2.write" permission)
-                +endif
-                
-                slider(inline value="{{z}}" disabled="{{unable('slider2.write')}}")
-                
-                .ui.message.red 
-                    p Here is the Hacked slider: 
-                    slider(inline value="{{z}}" disabled="false")
+    .ui.container 
+        .ui.grid
+            .centered.column 
+                h1.ui.top.attached.block.header
+                    icon.wrench Realtime Changes 
+                .ui.bottom.attached.raised.segment
+                    h2.ui.header Hello {{name}}!
+                    .ui.input: input(value="{{name}}")
+
+                    h3 Slider (@mydevice.hello.there) @20fps
+                    p Value: {{x}}
+                    slider(inline value="{{x}}")
+                    progress(type="circle" value="{{x}}")
+
+                    h3 Separate sync component (sync with @mydevice.hello.there)
+                    p Value: {{y}}
+                    
+                h1.ui.top.attached.block.header
+                    icon.lock Authorization 
+                .ui.attached.raised.segment
+                    .ui.grid 
+                        .eight.wide.column
+                            .ui.form 
+                                .fields 
+                                    .field 
+                                        label Username 
+                                        input(value="{{username}}")
+                                    .field 
+                                        label Password 
+                                        input(value="{{password}}")
+                                .fields
+                                    .field 
+                                        login-button.green(user="{{username}}" password="{{password}}") Login 
+                                        logout-button.red Logout 
+
+                        .eight.wide.column
+                            .ui.message 
+                                ul
+                                    li Logged in as #[.ui.large.orange.label {{@global.session.user}}]
+                                    li Available Routes:
+                                        ul 
+                                            +each('@global.session.routes as route')
+                                                li {{route}}
+                                    li Available Permissions: 
+                                        ul 
+                                            +each('@global.session.permissions as permission')
+                                                li {{permission}}
+                            .ui.green.message            
+                                p (use "myuser", "5678")
+
+                                    
+                h1.ui.attached.header
+                    icon.lock Authorized Area  
+                .ui.bottom.attachedraised.segment 
+                    +iff('able("slider2.write")')
+                        .ui.message.green You are allowed to move the slider. 
+                    +else 
+                        .ui.message.red You are not allowed to move the slider (you don't have "slider2.write" permission)
+                    +endif
+                    
+                    slider(inline value="{{z}}" disabled="{{unable('slider2.write')}}")
+                    
+                    .ui.message.red 
+                        p Here is the Hacked slider: 
+                        slider(inline value="{{z}}" disabled="false")
 
 scene(name="page2" public)
     p Hello, this is page2!            
     
-div(style="min-height: 100px")
+.spacer 
