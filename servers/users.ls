@@ -19,3 +19,8 @@ export users =
             \@mydevice.foo.**
         permissions:
             \slider2.write
+
+    'hellouser':
+        passwd-hash: hash-passwd "1234"
+        permissions:
+            \scene.hello.**

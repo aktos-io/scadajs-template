@@ -10,30 +10,33 @@ router(offset="50")
 //
     Rest is the pure Ractive template that you already know.     
     SemanticUI is supported out of the box.
-    You can use Pug obviously, with some additional mixins. See scada.js/templates/mixins.pug for more.
+    You can use Pug obviously, with some additional mixins. 
+    See scada.js/templates/mixins.pug for available mixins.
 
-
-// Description 
-// ------------------------------------------
-- var gh="https://github.com/aktos-io"
-- var webappAddr= gh + "/scadajs-template/blob/master/webapps/main/app.html"
-- var sourceAddr= gh + "/scadajs-template"
-- var demoAddr="https://aktos.io/st"
-- var scadajsAddr= gh + "/scada.js"
-- var issues=sourceAddr + "/issues"
 
 // Actual application code is below:
 // ----------------------------------
+- var gh = "https://github.com/aktos-io"
+- var sourceAddr = gh + "/scadajs-template"
+- var demoAddr = "https://aktos.io/st"
+- var scadajsAddr = gh + "/scada.js"
+- var issues = sourceAddr + "/issues"
+
 .ui.menu.fixed
     a.item(href="#/") Home 
     a.item(href="#/page2") Page 2
+    +if('able("scene.hello.**")')
+        a.item(slide-in-out href="#/hello") Hello
+    a.item(href="#/pagefoo") Not Exist    
+    a.item(href="#/hello2") Unauthorized
 
 scene(default public)
     // sync values with routes 
     sync(value="{{name}}" route="@mydevice.hello.name")
     sync(value="{{x}}" route="@mydevice.hello.there" fps="20")
     sync(value="{{y}}" route="@mydevice.hello.there")
-    sync(value="{{z}}" route="@mydevice.foo.bar")
+    +if('able("@mydevice.foo.bar")')
+        sync(value="{{z}}" route="@mydevice.foo.bar")
 
     .ui.container
         .ui.basic.segment 
@@ -80,8 +83,11 @@ scene(default public)
                     h3 Separate sync component (sync with @mydevice.hello.there)
                     p Value: {{y}}
                     
+                anchor authorization
                 h1.ui.top.attached.block.header
-                    icon.lock Authorization 
+                    .nowrap 
+                        icon.lock Authorization #[a(href="#authorization"): icon.linkify]
+                    
                 .ui.attached.raised.segment
                     .ui.grid 
                         .eight.wide.column
@@ -129,7 +135,34 @@ scene(default public)
                         p Here is the Hacked slider: 
                         slider(inline value="{{z}}" disabled="false")
 
+
 scene(name="page2" public)
-    p Hello, this is page2!            
-    
-.spacer 
+    p Hello, this is page2!   
+    .spacer 
+    anchor some-anchor
+    h2.ui.header Some anchor #[a(href="#some-anchor"): icon.purple.linkify]
+    p ...
+    p (got to #[a(href="#") top])
+    .spacer
+    p some content
+    .spacer
+
+scene(name="hello" permissions="scene.hello.**")
+    p.
+        This page can only be seen by the users who 
+        have the "scene.hello.**" permission, #[span.text.green like you :)]
+
+scene(name="hello2" permissions="scene.hello2.**")
+    p I think no one can see this page.
+        
+scene(name="NOTFOUND")
+    .ui.message.red 
+        .content.
+            No such page can be found. 
+            No one created {{@shared.router.scene}} yet.
+        
+scene(name="UNAUTHORIZED")
+    .ui.message.orange
+        .content.
+            You are not authorized for the page you requested.
+            Tip: Try to login with "hellouser, 1234" #[a(href="##authorization") here]
