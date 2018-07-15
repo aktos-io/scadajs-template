@@ -17,13 +17,15 @@ router(offset="50")
 - var scadajsAddr = gh + "/scada.js"
 - var issues = sourceAddr + "/issues"
 
-.ui.menu.fixed
-    a.item(href="#/") Home 
-    a.item(href="#/page2") Page 2
-    +if('able("scene.hello.**")')
-        a.item(slide-in-out href="#/hello") Hello
-    a.item(href="#/pagefoo") Not Exist    
-    a.item(href="#/hello2") Unauthorized
++unless('hideTopMenu')
+    .ui.menu.fixed
+        a.item(href="#/") Home 
+        a.item(href="#/page2") Page 2
+        +if('able("scene.hello.**")')
+            a.item(slide-in-out href="#/hello") Hello
+        a.item(href="#/pagefoo") Not Exist    
+        a.item(href="#/hello2") Unauthorized
+        a.item(href="#/fullwindow") Full Window
 
 scene(default public)
     // sync values with routes 
@@ -113,6 +115,8 @@ scene(default public)
                                                 li {{permission}}
                             .ui.green.message            
                                 p (use "myuser", "5678")
+                                p (use "hellouser, 1234" to see  #[a(href="#/hello") hello scene]
+
 
                                     
                 h1.ui.attached.header
@@ -151,6 +155,15 @@ scene(name="hello" permissions="scene.hello.**")
 scene(name="hello2" permissions="scene.hello2.**")
     p I think no one can see this page.
         
+
+scene(
+    name="fullwindow" 
+    offset="0"
+    on-enter-exit="@.toggle('hideTopMenu')"
+    public)
+    p This is a full window scene (no menu)
+    p You can navigate to main scene with #[a(href="#/") this link].
+
 scene(name="NOTFOUND")
     .ui.message.red 
         .content.
@@ -161,4 +174,3 @@ scene(name="UNAUTHORIZED")
     .ui.message.orange
         .content.
             You are not authorized for the page you requested.
-            Tip: Try to login with "hellouser, 1234" #[a(href="##authorization") here]
