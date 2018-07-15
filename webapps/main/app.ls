@@ -1,5 +1,5 @@
-require! \components
-require! \aea
+require! 'components'
+require! 'aea/defaults'
 
 new Ractive do
     el: \body

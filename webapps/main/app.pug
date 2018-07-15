@@ -18,13 +18,13 @@ router(offset="50")
 - var issues = sourceAddr + "/issues"
 
 +unless('hideTopMenu')
-    .ui.menu.fixed
-        a.item(href="#/") Home 
-        a.item(href="#/page2") Page 2
+    .ui.fixed.inverted.menu
+        a.inverted.green.item(href="#/") Home 
+        a.inverted.green.item(href="#/page2") Page 2
         +if('able("scene.hello.**")')
-            a.item(slide-in-out href="#/hello") Hello
-        a.item(href="#/pagefoo") Not Exist    
-        a.item(href="#/hello2") Unauthorized
+            a.inverted.orange.item(slide-in-out href="#/hello") Hello
+        a.inverted.red.item(href="#/pagefoo") Not Exist    
+        a.inverted.yellow.item(href="#/hello2") Unauthorized
         a.item(href="#/fullwindow") Full Window
 
 scene(default public)
@@ -42,6 +42,9 @@ scene(default public)
                 .ui.p(style="font-size: 1.2em; margin: 2em;").
                     This demo page will achieve its goal if you decide to give #[a(href=scadajsAddr): icon.github ScadaJS]
                     a shot in your next realtime webapp project.
+                    
+                .ui.p.
+                    Writing a webapp should be as simple as #[a(href=sourceAddr+'/blob/master/webapps/main') this one.]
                 
             .ui.p.
                 You can get the source code of this template webapp 
