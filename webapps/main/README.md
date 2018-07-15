@@ -1,1 +1,1 @@
-You can compile `app.pug` to `app.html` on http://html2jade.org/
+You can compile `app.pug` to `app.html` on https://pughtml.com/
