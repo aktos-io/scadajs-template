@@ -35,7 +35,7 @@ Step by step instructions to add a ScadaJS webapp to any project is as follows:
 
 3. Create an `app.js` (or `app.ls`) [like this](./webapps/main/app.ls).
 
-4. Create your `app.html` (or `app.pug`) with [the following contents](./webapps/main/app.html).
+4. Create your `app.html` (or `app.pug`) with [the following contents](./webapps/main/app.pug).
 This is the container of your single page application.
 
 5. Create an `index.html` (or `index.pug`) here with [the following contents](./webapps/main/index.html). This is your index.html file where the user fetches in the first place.
@@ -47,17 +47,17 @@ You can simply build `your-webapp` with the following command:
     cd your-project/scada.js
     gulp --webapp your-webapp [--production]
 
+Now `your-webapp` is ready to be served in `your-project/scada.js/build/your-webapp` folder. 
 
 #### 6. Serve your webapp
 
 Create a webserver that supports *Socket.io* and *aktos-dcs*, [like this one](./servers/webserver.ls).
 
-
 #### 7. See the result
 
 You can see `your-webapp` by opening [http://localhost:XXXX](./config.ls#L1) with any modern browser.
 
-By default, the slider's output will be lost in the DCS space because there is
+By default, the slider's output *will be lost in the DCS space* because there is
 nothing that handles these messages. See the next step:
 
 #### 8. Start adding your microservices

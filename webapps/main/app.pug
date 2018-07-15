@@ -4,18 +4,13 @@ aktos-dcs
 // Setup global logger
 logger
 
-// Setup the router 
+// Setup the router (offset is needed because of the fixed menu)
 router(offset="50")
 
 //
-    Rest is the pure Ractive template that you already know.     
-    SemanticUI is supported out of the box.
-    You can use Pug obviously, with some additional mixins. 
-    See scada.js/templates/mixins.pug for available mixins.
-
-
-// Actual application code is below:
-// ----------------------------------
+    Rest is the Ractive template that you already know.     
+    SemanticUI, Pug and Livescript is supported out of the box.
+    
 - var gh = "https://github.com/aktos-io"
 - var sourceAddr = gh + "/scadajs-template"
 - var demoAddr = "https://aktos.io/st"
