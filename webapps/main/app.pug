@@ -134,8 +134,8 @@ scene(default public)
                     .ui.message.red 
                         p Here is the Hacked slider: 
                         slider(inline value="{{z}}" disabled="false")
-
-
+    .spacer
+        
 scene(name="page2" public)
     p Hello, this is page2!   
     .spacer 
@@ -145,6 +145,7 @@ scene(name="page2" public)
     p (got to #[a(href="#") top])
     .spacer
     p some content
+    .spacer
     .spacer
 
 scene(name="hello" permissions="scene.hello.**")
@@ -159,7 +160,7 @@ scene(name="NOTFOUND")
     .ui.message.red 
         .content.
             No such page can be found. 
-            No one created {{@shared.router.scene}} yet.
+            No one created #[b {{@shared.router.scene}}] scene yet.
         
 scene(name="UNAUTHORIZED")
     .ui.message.orange
