@@ -1,7 +1,16 @@
-.ui.buttons 
-    ack-button.green(on-click="addNewDocument")
-        icon.plus New
-                
-    ack-button.olive(on-click="kickChanges" kick  timeout="15000") Refresh
+.ui.grid 
+    .row 
+        .column 
+            .ui.buttons 
+                ack-button.green(on-click="addNewDocument")
+                    icon.plus New
+                            
+                ack-button.olive(on-click="kickChanges" kick  timeout="15000") Refresh
 
-    ack-button.purple(on-click="pushData") Push Data!
+                ack-button.purple(on-click="pushData") Push Data!
+    .row
+        .column 
+            h5.ui.header Available Filters
+            .ui.mini.buttons 
+                btn.green(on-click="['setFilter','all']") All
+                btn.yellow(on-click="['setFilter','longOnes']") Long Ones

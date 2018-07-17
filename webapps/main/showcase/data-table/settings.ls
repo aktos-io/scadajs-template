@@ -1,4 +1,5 @@
 require! './db-simulator': {db}
+require! 'prelude-ls': {filter}
 
 export settings =
     name: "issues"
@@ -60,6 +61,10 @@ export settings =
                     labels: res.labels
             @update \tableview
         proceed err
+
+    filters:
+        longOnes: (tableview) ->
+            filter (.value?.subject?.length > 10), tableview
 
     handlers:
         # define ractive handlers here
