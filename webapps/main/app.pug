@@ -26,6 +26,18 @@ router(offset="50")
         a.inverted.red.item(href="#/pagefoo") Not Exist    
         a.inverted.yellow.item(href="#/hello2") Unauthorized
         a.item(href="#/fullwindow") Full Window
+        a.item(href="#/showcase/data-table") data-table
+
+scene(name="NOTFOUND")
+    .ui.message.red 
+        .content.
+            No such page can be found. 
+            No one created #[b {{@shared.router.scene}}] scene yet.
+        
+scene(name="UNAUTHORIZED")
+    .ui.message.orange
+        .content.
+            You are not authorized for the page you requested.
 
 scene(default public)
     // sync values with routes 
@@ -43,8 +55,8 @@ scene(default public)
                     This demo page will achieve its goal if you decide to give #[a(href=scadajsAddr): icon.github ScadaJS]
                     a shot in your next realtime webapp project.
                     
-                .ui.p.
-                    Writing a webapp should be as simple as #[a(href=sourceAddr+'/blob/master/webapps/main') this one.]
+                .ui.p(style="font-size: 1.2em; margin: 2em; font-weight: bold").
+                    Writing a webapp should be #[a(href=sourceAddr+'/blob/master/webapps/main') this simple].
                 
             .ui.p.
                 You can get the source code of this template webapp 
@@ -167,13 +179,6 @@ scene(
     p This is a full window scene (no menu)
     p You can navigate to main scene with #[a(href="#/") this link].
 
-scene(name="NOTFOUND")
-    .ui.message.red 
-        .content.
-            No such page can be found. 
-            No one created #[b {{@shared.router.scene}}] scene yet.
-        
-scene(name="UNAUTHORIZED")
-    .ui.message.orange
-        .content.
-            You are not authorized for the page you requested.
+scene(name="showcase/data-table" public)
+    include ./showcase/data-table/index.pug
+    

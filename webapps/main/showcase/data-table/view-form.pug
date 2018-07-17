@@ -1,0 +1,19 @@
+.ui.segments 
+    h3.ui.top.attached.block.header 
+        | <b> {{ curr._id }} </b>
+        +apply('controls "right floated" as cls')
+        div(style="clear: both")
+
+    .ui.segment
+        h2.header.ui {{curr.subject}}
+        +if('curr.labels')
+            .ui.p 
+                +each('curr.labels as label')
+                    .ui.blue.label {{label}}
+
+    .ui.segment 
+        .ui.p {{curr.content}}
+
+    .ui.segment 
+        btn.inverted.red.icon(on-click="closeRow"): icon.remove Close
+        

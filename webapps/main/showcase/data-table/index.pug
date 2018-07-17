@@ -1,0 +1,13 @@
+.ui.container
+    data-table(settings="{{dataTableExample}}")    
+        +partial('header')
+            include ./header.pug
+
+        +partial('viewForm')
+            include ./view-form.pug
+
+        +partial('editForm')
+            include ./edit-form.pug
+            
+        +partial('footer')
+            p This is the footer content

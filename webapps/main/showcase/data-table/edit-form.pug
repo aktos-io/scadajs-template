@@ -1,0 +1,26 @@
+.ui.segments 
+    h3.ui.top.attached.block.header 
+        | ID: #[b {{ curr._id }}]
+        +apply('controls "right floated" as cls')
+        div(style="clear: both")
+        //- TIP: Use `curr._rev` to determine if this is a new document or not
+
+    .ui.segment 
+        h2.header.ui 
+            .ui.input: input(value="{{curr.subject}}")
+                
+        .ui.form 
+            textarea {{curr.content}}
+
+        dropdown(
+            multiple
+            data="{{availableLabels}}"
+            selected-key="{{curr.labels}}"
+            on-add="addLabel"
+            )
+            
+    .ui.segment 
+        //- use an ack-button to save your document
+        ack-button.green(on-click="save") Save        
+        btn.inverted.red.icon(on-click="closeRow"): icon.remove Close
+        
