@@ -69,16 +69,20 @@ export settings =
 
     handlers:
         # define ractive handlers here
-        kickChanges: (ctx) ->
+        kickChanges: (ctx, callback) ->
             btn = ctx.component
-            btn.state \doing
+            btn?.state \doing
             err, res <~ db.view
             # set your tableview when you are done
             @set \tableview, res
-            btn.state \done...
+            btn?.state \done...
+            callback?!
 
         pushData: (ctx) ->
+            btn = ctx.component
+            btn.state \doing
             db.generate-data!
+            <~ @fire \kickChanges
             btn.state \done...
 
         addLabel: (ctx, search, proceed) ->
