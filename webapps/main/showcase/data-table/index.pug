@@ -1,7 +1,13 @@
 .ui.container
+    
+    h1.ui.header.horizontal.divider #[code data-table] example 
+    
     data-table(settings="{{dataTableExample}}")    
         +partial('header')
             include ./header.pug
+            
+        +partial('row')
+            include ./table-row.pug
 
         +partial('viewForm')
             include ./view-form.pug
@@ -11,3 +17,4 @@
             
         +partial('footer')
             p This is the footer content
+            debug-obj(obj="{{tableview}}" title="tableview" public)

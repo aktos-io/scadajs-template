@@ -1,0 +1,12 @@
+td 
+    +iff('isLastClicked(.id)')
+        .ui.orange.ribbon.label {{.id}}
+    +else 
+        | {{.id}}
+    +endif 
+td 
+    | {{.value.subject}}
+td 
+    +each('.value.labels as label')
+        .ui.label(class="{{#if label.match('12')}}teal{{else}}blue{{/if}}")
+            | {{label}}

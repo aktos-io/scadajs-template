@@ -2,10 +2,16 @@ require! './db-simulator': {db}
 
 export settings =
     name: "issues"
-    autoincrement: yes
+
+    autoincrement: yes # only valid if you are using default on-save function
+
     # define how many rows per page (0 or null for infinite table)
     page-size: 10
-    search-fields: <[ value.labels value.subject ]>  # additional search fields
+
+    # additional search fields, array of keypaths relative to row
+    search-fields:
+        \value.labels
+        \value.subject
 
     # this is the default document for newly created rows
     default: ->
@@ -13,23 +19,11 @@ export settings =
         type: \issue
         subject: "your subject here..."
 
-    # column names for the table view
+    # column names for the table view, array of template strings
     col-names:
         "ID"
         "Subject"
-        "Labels"
-
-    # create tableview here.
-    after-filter: (rows, proceed) ->
-        view = for row in rows
-            id: row.id
-            cols:
-                row.key
-                row.value.subject
-                (try ["<div class='ui label blue'>#{..}</div>" for row.value.labels].join '') or ''
-
-        # call next method when finished:
-        proceed view
+        "Labels <i class='icon cogs' />"
 
     # when data table first renders, this function is run:
     on-init: (proceed) ->
