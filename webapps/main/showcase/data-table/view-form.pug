@@ -6,6 +6,7 @@
 
     .ui.segment
         h2.header.ui {{curr.subject}}
+        .ui.message #[code 2 x 2] = {{double(2)}}
         +if('curr.labels')
             .ui.p 
                 +each('curr.labels as label')

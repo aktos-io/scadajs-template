@@ -34,11 +34,12 @@ export db =
             next-doc-id++
         doc._rev = (doc._rev or 0) + 1
         if find (._id is doc._id), docs
-            that = doc
+            err = "Conflict"
         else
+            err = null
             docs.push doc
         <~ sleep 1000ms
-        callback err=null, doc
+        callback err, null
 
     get: (id, callback) ->
         doc = find (._id is id), docs

@@ -1,6 +1,6 @@
 .ui.segments 
     h3.ui.top.attached.block.header 
-        | ID: #[b {{ curr._id }}]
+        | ID: #[.ui.input: input(value="{{ curr._id }}")]
         +apply('controls "right floated" as cls')
         div(style="clear: both")
         //- TIP: Use `curr._rev` to determine if this is a new document or not

@@ -1,14 +1,15 @@
 td 
     btn.mini(
-        on-click="clicked" 
+        on-click="openRow" 
         class="{{#if isLastClicked(.id)}}orange{{/if}}"
         ) {{.id}}
 td 
     | {{.value.subject}}
 td 
     +each('.value.labels as label')
-        .ui.label(class="{{#if label.match('12')}}teal{{else}}blue{{/if}}")
+        .ui.label(class="{{#if label.match('12')}}pink{{else}}blue{{/if}}")
             | {{label}}
 
-//- if background-color will be set, following line can be used            
-//| {{@context.set('.bgcolor', 'red') && ''}}
+//- if current row's background-color will be set, following line can be used            
+
+    | {{@context.set('.bgcolor', 'red') && ''}}

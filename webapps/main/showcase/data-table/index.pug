@@ -1,7 +1,27 @@
 .ui.container
-    
+    .ui.hidden.divider
     h1.ui.header.horizontal.divider #[code data-table] example 
-    
+    .ui.hidden.divider
+
+    .ui.message 
+        h3.ui.header Tests 
+        .ui.accordion(as-accordion)
+            .title: icon.dropdown Add a new document 
+            .content
+                ol
+                    li Click #[.ui.green.mini.label Add New] button
+                    li Fill the inputs (optional)
+                    li Click #[.ui.green.mini.label Save] button 
+                    li Expect: "ISSUE-0" document should be created
+                     
+            .title: icon.dropdown Create a conflict 
+            .content
+                ol
+                    li Create a new document 
+                    li Assign "hello0" as document ID 
+                    li Try to save 
+                    li Expect: "Conflict" error 
+                    
     data-table(settings="{{dataTableExample}}")    
         +partial('header')
             include ./header.pug
