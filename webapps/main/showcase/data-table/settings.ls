@@ -55,8 +55,7 @@ export settings =
         err, res <~ db.put curr
         @update \curr
         if is-new and not err
-            t = @get \tableview
-            t.unshift do
+            @get \tableview .unshift do
                 id: curr._id
                 key: curr._id
                 value:
