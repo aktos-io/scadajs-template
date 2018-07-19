@@ -3,8 +3,14 @@ td
         on-click="openRow" 
         class="{{#if isLastClicked(.id)}}orange{{/if}}"
         ) {{.id}}
+
++if('colNames.1')
+    td
+        | Some private info {{double(@index)}}
+
 td 
     | {{.value.subject}}
+
 td 
     +each('.value.labels as label')
         .ui.label(class="{{#if label.match('12')}}pink{{else}}blue{{/if}}")

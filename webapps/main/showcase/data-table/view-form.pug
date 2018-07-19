@@ -12,6 +12,13 @@
                 +each('curr.labels as label')
                     .ui.blue.label {{label}}
 
+        +iff('canSeePrivate()')
+            .ui.message.green 
+                p Is able to see private info 
+        +else
+            .ui.message.red 
+                p IS NOT ABLE TO SEE THE PRIVATE INFO
+        +endif 
     .ui.segment 
         .ui.p {{curr.content}}
 

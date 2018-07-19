@@ -7,10 +7,13 @@ export settings =
 
     # REQUIRED
     # column names for the table view, array of template strings
-    col-names:
-        "ID"
-        "Subject"
-        "Labels <i class='icon cogs' />"
+    # type: function (useful for @able) or array
+    col-names: ->
+        return
+            "ID"
+            "<div class='ui red basic label'>Private Data</div>" if (@get \canSeePrivate)!
+            "Subject"
+            "Labels <i class='icon cogs' />"
 
     # REQUIRED
     # when data table first renders, this function is run:
@@ -18,7 +21,6 @@ export settings =
         db.generate-data!
         err, res <~ db.view
         @set \tableview, res
-        @set \availableLabels, [{id: .., name: ..} for <[ hello there ]>]
         proceed!
 
     # OPTIONAL
@@ -67,7 +69,13 @@ export settings =
     # Just like Ractive.data
     # type: function
     data: ->
-        double: (* 2)
+        double: (x) ->
+            return 2 * x
+
+        canSeePrivate: ->
+            @able \scene.hello.**
+
+        availableLabels: [{id: .., name: ..} for <[ hello there ]>]
 
     # OPTIONAL
     # Return an array of rows (default: 'all')

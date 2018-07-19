@@ -21,6 +21,14 @@
                     li Assign "hello0" as document ID 
                     li Try to save 
                     li Expect: "Conflict" error 
+
+            .title: icon.dropdown See "Private Data" column 
+            .content
+                ol
+                    li You shouldn't see "Private Data" column (second column) at the beginning
+                    li Go to #[a(href="##authorization") Authorization Test] section 
+                    li Login with "hellouser", "1234"
+                    li Come back here and see the second column is added
                     
     data-table(settings="{{dataTableExample}}")    
         +partial('header')
