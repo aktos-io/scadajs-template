@@ -44,7 +44,7 @@ scene(default public)
     sync(value="{{name}}" route="@mydevice.hello.name")
     sync(value="{{x}}" route="@mydevice.hello.there" fps="20")
     sync(value="{{y}}" route="@mydevice.hello.there")
-    +if('able("@mydevice.foo.bar")')
+    +if('hasRoute("@mydevice.foo.bar")')
         sync(value="{{z}}" route="@mydevice.foo.bar")
 
     .ui.container
