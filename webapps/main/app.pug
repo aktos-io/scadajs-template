@@ -46,7 +46,7 @@ scene(default public)
     sync(value="{{y}}" route="@mydevice.hello.there")
     +if('hasRoute("@mydevice.foo.bar")')
         sync(value="{{z}}" route="@mydevice.foo.bar")
-
+                        
     .ui.container
         .ui.basic.segment 
             .ui.big.message(style="padding: 150px auto")
