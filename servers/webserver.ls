@@ -1,4 +1,6 @@
-require! <[ path express dcs dcs/browser ]>
+require! \path
+require! \express
+require! 'dcs/services/dcs-proxy': {AuthDB, DcsSocketIOServer, DcsTcpServer}
 
 # configuration
 require! '../config': {webserver-port, dcs-port}
@@ -11,11 +13,11 @@ http.listen webserver-port, "0.0.0.0", ->
     console.log "webserver is listening on *:#{webserver-port}"
 
 # Create auth db
-db = new dcs.AuthDB (require './users' .users)
+db = new AuthDB (require './users' .users)
 # use ..update(users) to add more users in the runtime
 
 # Create a SocketIO bridge
-new browser.DcsSocketIOServer http, {db}
+new DcsSocketIOServer http, {db}
 
 # Create a TCP DCS Service
-new dcs.DcsTcpServer {port: dcs-port, db}
+new DcsTcpServer {port: dcs-port, db}
