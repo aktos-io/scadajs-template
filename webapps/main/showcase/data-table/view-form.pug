@@ -14,10 +14,10 @@
 
         +iff('canSeePrivate()')
             .ui.message.green 
-                p Is able to see private info 
+                .ui.p Is able to see private info 
         +else
             .ui.message.red 
-                p IS NOT ABLE TO SEE THE PRIVATE INFO
+                .ui.p IS NOT ABLE TO SEE THE PRIVATE INFO
         +endif 
     .ui.segment 
         .ui.p {{curr.content}}

@@ -88,12 +88,12 @@ scene(default public)
                     .ui.input: input(value="{{name}}")
 
                     h3 Slider (@mydevice.hello.there) @20fps
-                    p Value: {{x}}
+                    .ui.p Value: {{x}}
                     slider(inline value="{{x}}")
                     progress(type="circle" value="{{x}}")
 
                     h3 Separate sync component (sync with @mydevice.hello.there)
-                    p Value: {{y}}
+                    .ui.p Value: {{y}}
                     
                 anchor authorization
                 h1.ui.top.attached.block.header
@@ -129,8 +129,8 @@ scene(default public)
                                             +each('@global.session.permissions as permission')
                                                 li {{permission}}
                             .ui.green.message            
-                                p (use "myuser", "5678")
-                                p (use "hellouser, 1234" to see  #[a(href="#/hello") hello scene]
+                                .ui.p (use "myuser", "5678")
+                                .ui.p (use "hellouser, 1234" to see  #[a(href="#/hello") hello scene]
 
 
                                     
@@ -146,29 +146,29 @@ scene(default public)
                     slider(inline value="{{z}}" disabled="{{unable('slider2.write')}}")
                     
                     .ui.message.red 
-                        p Here is the Hacked slider: 
+                        .ui.p Here is the Hacked slider: 
                         slider(inline value="{{z}}" disabled="false")
     .spacer
         
 scene(name="page2" public)
-    p Hello, this is page2!   
+    .ui.p Hello, this is page2!   
     .spacer 
     anchor some-anchor
     h2.ui.header Some anchor #[a(href="#some-anchor"): icon.purple.linkify]
-    p ...
-    p (got to #[a(href="#") top])
+    .ui.p ...
+    .ui.p (got to #[a(href="#") top])
     .spacer
-    p some content
+    .ui.p some content
     .spacer
     .spacer
 
 scene(name="hello" permissions="scene.hello.**")
-    p.
+    .ui.p.
         This page can only be seen by the users who 
         have the "scene.hello.**" permission, #[span.text.green like you :)]
 
 scene(name="hello2" permissions="scene.hello2.**")
-    p I think no one can see this page.
+    .ui.p I think no one can see this page.
         
 
 scene(
@@ -176,8 +176,8 @@ scene(
     offset="0"
     on-enter-exit="@.toggle('hideTopMenu')"
     public)
-    p This is a full window scene (no menu)
-    p You can navigate to main scene with #[a(href="#/") this link].
+    .ui.p This is a full window scene (no menu)
+    .ui.p You can navigate to main scene with #[a(href="#/") this link].
 
 scene(name="showcase/data-table" public)
     include ./showcase/data-table/index.pug
