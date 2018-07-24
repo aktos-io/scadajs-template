@@ -100,6 +100,13 @@ scene(default public)
                     h3 Separate sync component (sync with @mydevice.hello.there)
                     .ui.p Value: {{y}}
                     
+                    time-series(
+                        y-format="#.# °C" 
+                        name="test"
+                        current="{{x}}"
+                        live)
+
+                    
                 anchor authorization
                 h1.ui.top.attached.block.header
                     .nowrap 

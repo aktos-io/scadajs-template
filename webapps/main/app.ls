@@ -1,5 +1,5 @@
-require! 'components/components'
 require! 'aea/defaults'
+require! 'components'
 
 try
     new Ractive do

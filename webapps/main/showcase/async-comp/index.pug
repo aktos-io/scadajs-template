@@ -17,15 +17,6 @@
                         selected-key="{{aceTheme}}"
                         )
 
-        async(name="ace-editor")
-            ace-editor(code="{{myJs}}" mode="{{aceMode}}" theme="{{aceTheme}}")
-            +partial('loading')
-                .ui.message.yellow 
-                    h5.ui.header ace-editor is being fetched. 
-                    .ui.p You can use a simple textarea for now 
-                    .ui.form
-                        .field 
-                            textarea(value="{{myJs}}")
-                            
+        ace-editor(code="{{myJs}}" mode="{{aceMode}}" theme="{{aceTheme}}")                            
         h4.ui.header Editor Content:
         pre {{myJs}}
