@@ -10,8 +10,9 @@ sleep 0ms, ~>
 start = Date.now!
 $.getScript "js/dep.js", ->
     info.close!
+    elapsed = (Date.now! - start) / 1000
     PNotify.info do
-        text: "Dependencies are loaded in #{Date.now! - start}ms"
+        text: "Dependencies are loaded in #{Math.round(elapsed * 10) / 10} s"
 
 
 try
