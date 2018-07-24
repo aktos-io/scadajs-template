@@ -177,29 +177,30 @@ scene(name="showcase/async-comp" public)
     .ui.container
         .ui.segment 
             h3.ui.header Async Component Testing
-            +iff('@shared.deps')
-                .ui.form 
-                    .fields 
-                        .field 
-                            label Select Language 
-                            | {{@.set('aceMode', 'javascript') && ''}}
+            .ui.form 
+                .fields 
+                    .field 
+                        label Select Language 
+                        | {{@.set('aceMode', 'javascript') && ''}}
 
-                            dropdown(
-                                data="{{ [{id: 'livescript', name: 'LiveScript'},{id: 'javascript', name: 'Javascript'}] }}"
-                                selected-key="{{aceMode}}")
-                        .field
-                            label Select Theme 
-                            dropdown(
-                                data="{{ [{id: 'dark', name: 'Dark'}, {id: 'light', name: 'Light'}]}}"
-                                selected-key="{{aceTheme}}"
-                                )
+                        dropdown(
+                            data="{{ [{id: 'livescript', name: 'LiveScript'},{id: 'javascript', name: 'Javascript'}] }}"
+                            selected-key="{{aceMode}}")
+                    .field
+                        label Select Theme 
+                        dropdown(
+                            data="{{ [{id: 'dark', name: 'Dark'}, {id: 'light', name: 'Light'}]}}"
+                            selected-key="{{aceTheme}}"
+                            )
+
+            +iff('@shared.deps')
                 ace-editor(code="{{myJs}}" mode="{{aceMode}}" theme="{{aceTheme}}")
-                    
-                h4.ui.header Editor Content:
-                pre {{myJs}}
             +else 
                 .ui.yellow.message We are fetching ace-editor...
             +endif         
+                                
+            h4.ui.header Editor Content:
+            pre {{myJs}}
 
 scene(
     name="fullwindow" 
