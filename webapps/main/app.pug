@@ -193,11 +193,8 @@ scene(name="showcase/async-comp" public)
                             selected-key="{{aceTheme}}"
                             )
 
-            +iff('@shared.deps')
+            async(fetched="{{@shared.deps}}")
                 ace-editor(code="{{myJs}}" mode="{{aceMode}}" theme="{{aceTheme}}")
-            +else 
-                .ui.yellow.message We are fetching ace-editor...
-            +endif         
                                 
             h4.ui.header Editor Content:
             pre {{myJs}}
