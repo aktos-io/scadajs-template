@@ -1,0 +1,31 @@
+.ui.container
+    .ui.segment 
+        h3.ui.header Async Component Testing
+        .ui.form 
+            .fields 
+                .field 
+                    label Select Language 
+                    | {{@.set('aceMode', 'javascript') && ''}}
+
+                    dropdown(
+                        data="{{ [{id: 'livescript', name: 'LiveScript'},{id: 'javascript', name: 'Javascript'}] }}"
+                        selected-key="{{aceMode}}")
+                .field
+                    label Select Theme 
+                    dropdown(
+                        data="{{ [{id: 'dark', name: 'Dark'}, {id: 'light', name: 'Light'}]}}"
+                        selected-key="{{aceTheme}}"
+                        )
+
+        async(name="ace-editor")
+            ace-editor(code="{{myJs}}" mode="{{aceMode}}" theme="{{aceTheme}}")
+            +partial('loading')
+                .ui.message.yellow 
+                    h5.ui.header ace-editor is being fetched. 
+                    .ui.p You can use a simple textarea for now 
+                    .ui.form
+                        .field 
+                            textarea(value="{{myJs}}")
+                            
+        h4.ui.header Editor Content:
+        pre {{myJs}}

@@ -28,8 +28,10 @@ router(offset="50")
         a.item(href="#/fullwindow") Full Window
 
         //- TODO: separate them with a submenu
-        a.item(href="#/showcase/data-table") data-table
-        a.item(href="#/showcase/async-comp") async component
+        include ./showcase/menu.pug 
+        
+// Include Showcase scenes 
+include ./showcase/scenes.pug
 
 scene(name="NOTFOUND")
     .ui.message.red 
@@ -173,32 +175,6 @@ scene(name="hello" permissions="scene.hello.**")
 scene(name="hello2" permissions="scene.hello2.**")
     .ui.p I think no one can see this page.
 
-scene(name="showcase/async-comp" public)
-    .ui.container
-        .ui.segment 
-            h3.ui.header Async Component Testing
-            .ui.form 
-                .fields 
-                    .field 
-                        label Select Language 
-                        | {{@.set('aceMode', 'javascript') && ''}}
-
-                        dropdown(
-                            data="{{ [{id: 'livescript', name: 'LiveScript'},{id: 'javascript', name: 'Javascript'}] }}"
-                            selected-key="{{aceMode}}")
-                    .field
-                        label Select Theme 
-                        dropdown(
-                            data="{{ [{id: 'dark', name: 'Dark'}, {id: 'light', name: 'Light'}]}}"
-                            selected-key="{{aceTheme}}"
-                            )
-
-            async(fetched="{{@shared.deps}}")
-                ace-editor(code="{{myJs}}" mode="{{aceMode}}" theme="{{aceTheme}}")
-                                
-            h4.ui.header Editor Content:
-            pre {{myJs}}
-
 scene(
     name="fullwindow" 
     offset="0"
@@ -207,6 +183,4 @@ scene(
     .ui.p This is a full window scene (no menu)
     .ui.p You can navigate to main scene with #[a(href="#/") this link].
 
-scene(name="showcase/data-table" public)
-    include ./showcase/data-table/index.pug
     
