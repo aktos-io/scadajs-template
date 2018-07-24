@@ -26,7 +26,10 @@ router(offset="50")
         a.inverted.red.item(href="#/pagefoo") Not Exist    
         a.inverted.yellow.item(href="#/hello2") Unauthorized
         a.item(href="#/fullwindow") Full Window
+
+        //- TODO: separate them with a submenu
         a.item(href="#/showcase/data-table") data-table
+        a.item(href="#/showcase/async-comp") async component
 
 scene(name="NOTFOUND")
     .ui.message.red 
@@ -49,13 +52,6 @@ scene(default public)
 
                         
     .ui.container
-        .ui.segment 
-            h3.ui.header Async Component Testing
-            checkbox(checked="{{renderAce}}") Show Ace Editor
-            +if('renderAce')
-                ace-editor(code="{{myJs}}")
-                pre {{myJS}}
-
         .ui.basic.segment 
             .ui.big.message(style="padding: 150px auto")
                 h1.ui.big.header ScadaJS Template 
@@ -176,7 +172,19 @@ scene(name="hello" permissions="scene.hello.**")
 
 scene(name="hello2" permissions="scene.hello2.**")
     .ui.p I think no one can see this page.
-        
+
+scene(name="showcase/async-comp" public)
+    .ui.container
+        .ui.segment 
+            h3.ui.header Async Component Testing
+            +iff('@shared.deps')
+                ace-editor(code="{{myJs}}")
+                    
+                h4.ui.header Editor Content:
+                pre {{myJs}}
+            +else 
+                .ui.yellow.message We are fetching ace-editor...
+            +endif         
 
 scene(
     name="fullwindow" 
