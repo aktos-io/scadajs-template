@@ -46,8 +46,16 @@ scene(default public)
     sync(value="{{y}}" route="@mydevice.hello.there")
     +if('hasRoute("@mydevice.foo.bar")')
         sync(value="{{z}}" route="@mydevice.foo.bar")
+
                         
     .ui.container
+        .ui.segment 
+            h3.ui.header Async Component Testing
+            checkbox(checked="{{renderAce}}") Show Ace Editor
+            +if('renderAce')
+                ace-editor(code="{{myJs}}")
+                pre {{myJS}}
+
         .ui.basic.segment 
             .ui.big.message(style="padding: 150px auto")
                 h1.ui.big.header ScadaJS Template 
@@ -76,7 +84,6 @@ scene(default public)
                         li See the webapp code in order to understand the custom #[code Ractive.able()] helper
                         li See the #[code users.ls] to understand how to manage the #[code routes] and #[code permissions].
                 li How to manage routing: Use #[code scene] and #[code router] components.
-
 
     .ui.container 
         .ui.grid
