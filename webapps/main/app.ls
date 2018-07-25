@@ -22,6 +22,7 @@ try
             PNotify.info do
                 text: "Dependencies are loaded in #{Math.round(elapsed * 10) / 10} s"
 
+            # send signal to Async Synchronizers
             @set "@shared.deps", {_all: yes}, {+deep}
 
 catch
