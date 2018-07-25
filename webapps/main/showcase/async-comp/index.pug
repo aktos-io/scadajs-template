@@ -17,6 +17,13 @@
                         selected-key="{{aceTheme}}"
                         )
 
-        ace-editor(code="{{myJs}}" mode="{{aceMode}}" theme="{{aceTheme}}")                            
-        h4.ui.header Editor Content:
-        pre {{myJs}}
+        .ui.equal.width.grid
+            .row
+                .column 
+                    ace-editor(code="{{myJs}}" mode="{{aceMode}}" theme="{{aceTheme}}")                            
+                    h4.ui.header Editor Content:
+                    pre {{myJs}}
+                .column 
+                    ace-editor(code="{{myJs2}}" mode="{{aceMode}}" theme="{{aceTheme}}")                            
+                    h4.ui.header Editor2 Content:
+                    pre {{myJs2}}

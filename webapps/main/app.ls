@@ -9,22 +9,28 @@ try
         data:
             dataTableExample: require './showcase/data-table/settings' .settings
 
-        oncomplete: ->
-            # Let Ractive complete rendering before fetching any other dependencies
-            info = PNotify.notice do
-                text: "Fetching dependencies..."
-                hide: no
+        on:
+            dcsLive: ->
+                # Let Ractive complete rendering before fetching any other dependencies
+                simulation = 10_000ms
+                PNotify.success do
+                    title: "Simulating Delay"
+                    text: "Simulating #{simulation/1000} seconds of delay..."
 
-            start = Date.now!
-            <~ getScriptCached "js/dep.js"
-            info.close!
-            elapsed = (Date.now! - start) / 1000
-            PNotify.info do
-                text: "Dependencies are loaded in #{Math.round(elapsed * 10) / 10} s"
+                info = PNotify.notice do
+                    text: "Fetching dependencies..."
+                    hide: no
 
-            # send signal to Async Synchronizers
-            @set "@shared.deps", {_all: yes}, {+deep}
+                start = Date.now!
+                <~ sleep simulation
+                <~ getScriptCached "js/dep.js"
+                info.close!
+                elapsed = (Date.now! - start) / 1000
+                PNotify.info do
+                    text: "Dependencies are loaded in #{oneDecimal elapsed} s"
+
+                # send signal to Async Synchronizers
+                @set "@shared.deps", {_all: yes}, {+deep}
 
 catch
-    loadingError e.stack
-    throw e
+    loadingError (e.stack or e)
