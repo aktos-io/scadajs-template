@@ -13,7 +13,7 @@ See this project live on https://aktos.io/st (scadajs-template).
 
 # Install
 
-1. Install [`NodeJs`](https://nodejs.org)
+1. Install [`NodeJs 8.x`](https://nodejs.org)
 
 2. Install global `npm` dependencies (**as root/admin**):
 
