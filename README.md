@@ -17,7 +17,7 @@ See this project live on https://aktos.io/st (scadajs-template).
 
 2. Install global `npm` dependencies (**as root/admin**):
 
-        npm install -g gulp livescript@1.4.0
+        npm install -g gulp livescript@1.4.0 node-gyp
 
 
 3. Download the project template, install project dependencies:
