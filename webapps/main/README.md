@@ -10,7 +10,7 @@ Basically file structure is that simple. Rest of the files are optional and incl
 ### Optional Files
 
 * `app.pug`: The main template file. Every other template files are included in this file. Pug allows native server side includes by `include` keyword. 
-* `dep.ls`: Non critical codes which may be loaded after first page load (for performance and UX reasons). It is compiled to `js/dep.js` and user is responsible for merging it in the runtime, no magic is done automatically. 
+* `dep.ls`: Non critical codes which may be loaded after first page load (for performance and UX reasons). It is compiled to `js/dep.js` and user is responsible for merging it in the runtime, no magic is done automatically, explained [here](https://github.com/ceremcem/ractive-synchronizer). 
 * `showcase/`: More complicated examples' files which are split into smaller files and folders.
 
 > You can compile `.pug` files to `.html` on https://pughtml.com/
