@@ -19,7 +19,7 @@ Following command will start everything needed for development:
 
        ./uidev.service
 
-> Use "Git Bash" to run `.sh` scripts on Windows.
+> Use "Git Bash" to run `bash` scripts on Windows.
 
 ## Testing
 
