@@ -22,7 +22,7 @@
 
 ### Optional Files
 
-`dep.ls`: If exists, it is compiled into `js/dep.js`. This is intended to be used for non critical codes (like [async components](https://github.com/ceremcem/ractive-synchronizer)) to be loaded after first page load. User is responsible for handling this script, no action is taken automatically. 
+* `dep.ls`: If exists, it is compiled into `js/dep.js`. This is intended to be used for non critical codes (like [async components](https://github.com/ceremcem/ractive-synchronizer)) to be loaded after first page load. Developer is responsible for handling this script, no action is taken automatically. 
 
 ### App Specific Layout
 
@@ -33,7 +33,7 @@ Following files are optional and included directly or indirectly by above requir
 
 ### Other Files 
 
-`vendor2.{js,css}`: Files under `scada.js/vendor2/` are compiled into `js/vendor2.js` and `css/vendor2.css` accordingly and contain non-critical libraries that may or may not be needed in user application. Developer is responsible for loading these files if they are necessary. 
+* `vendor2.{js,css}`: Files under `scada.js/vendor2/` are compiled into `js/vendor2.js` and `css/vendor2.css` accordingly. These files contain non-critical 3rd party libraries that may or may not be needed in *this* webapp. Developer is responsible for loading these files if they are necessary. 
 
 # See Also 
 
