@@ -1,7 +1,12 @@
-require! 'aea/defaults'
-require! 'components'
-
 try
+    require! 'aea/defaults'
+    require! 'components'
+
+    loadingMessage "Getting vendor2.css"
+    <~ getDep "css/vendor2.css"
+    loadingMessage "Getting vendor2.js"
+    <~ getDep "js/vendor2.js"
+
     new Ractive do
         el: \body
         template: RACTIVE_PREPARSE('app.pug')
@@ -23,7 +28,7 @@ try
 
                 start = Date.now!
                 <~ sleep simulation
-                <~ getScriptCached "js/dep.js"
+                <~ getDep "js/dep.js"
                 info.close!
                 elapsed = (Date.now! - start) / 1000
                 PNotify.info do
