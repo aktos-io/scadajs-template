@@ -26,11 +26,9 @@ router(offset="50")
         a.inverted.red.item(href="#/pagefoo") Not Exist    
         a.inverted.yellow.item(href="#/hello2") Unauthorized
         a.item(href="#/fullwindow") Full Window
-        .ui.dropdown.item(as-dropdown)
-            | Showcase
-            icon.dropdown  
-            .menu 
-                include ./showcase/menu.pug 
+        
+        // Include Showcase menu
+        include ./showcase/menu.pug 
         
 // Include Showcase scenes 
 include ./showcase/scenes.pug
