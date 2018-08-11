@@ -2,7 +2,7 @@
 
 ### Required Files
 
-* `index.pug` is compiled to `index.html` by using `scada.js/templates` which is served as main html file to the user upon page request. Simplest form of `index.html` is:
+* `index.pug` is compiled to `index.html` by using `scada.js/templates` and served as main html file to the user upon page request. Simplest form is:
 
     ```html
     <html>
@@ -18,7 +18,7 @@
     </html>
     ```
 
-* `app.ls` is the **main application executable**, compiled into `js/app.js` and is downloaded by `index.html` as shown.
+* `app.ls` is the **main application**, compiled into `js/app.js` and is downloaded by `index.html`.
 
 ### Optional Files
 
