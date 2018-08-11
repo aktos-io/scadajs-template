@@ -1,16 +1,24 @@
 - var playground="https://ractive.js.org/playground/#N4IgLiBcIgNCBnKIB2BTA7gAgCYGMEA6AEQIGUB7PAazTAEkB5AIQCcKME1WAKYAHRRYsAQxw5WaBAkhYA5AAswYAA4yA9OpHUwFIgEsK6ubEHCVIsAtlz1CMMcEBfAJSDB6bACUReMPoA3ND4zLDQAGxsAIwocAE8TULA0AFsVcMs0WQADUOEAHhUAPgBxCixdLHyRCpFWAHM6AF5+EAB9KIyUalasBUkAMxaQJVUNLR09QkM7MFai7V0DI3t8rSLRFBwsFIogioU0LARw-RxuNeL3FH45sHyFAGYiw-DwillgYFf3pyc1p5Fdx3fL6FAqACuYAqcRUaGGrBEKEavQCInCEPhrS+Pwof16KREAA9hgBGAAM5N69jQKmG5MIpN66iBNzA2VMQiwFBQki23FkAwhKD8hhQPBcAi5wmS9iwTSwnlwBEI9AoAAV2ES4gBhU5oFBgELS4RYdhQrLyAACKTi5wC+jwaEIuMIVm4aDkeSwrm93rRrD6SJw4SOCqs+iIFCiXFYQR4igi7xMWB4aPCLnlGylptNsrAhAwrH0yTT6Ngqe4rEzTWz3tz+gGPCrkuBudzeB5CAoocIVYovFakgQKi7RwoAywRZLltaFZbAG566anMvfSb17nvfnCDyE5IxCmyxms1gc+2FMHewh9KGRcE3CaZQpI4QuEbE28KCn0y4l0+gy2XthwhFIH29TdTW3KQCz3OR+1YI8W1Pc8Oy7HtnQQnhWgQqcSwUCoYKwQxZDnMJWGrf921EUNWCNRcIMfa5hFXFBXDgEA8GQDiFCgUBWGQDJ8w4pBIAAbRGZQ1EgTREQweoS0ITsUgmJYAFoZkWPQ1PwBA1JQWI0HUe1jMjBxdMIAArJAAF0-iAA"
 -var screencast="https://user-images.githubusercontent.com/6639874/43987776-2154f88a-9d2f-11e8-9d26-2a55b05b331a.gif"
 .ui.container
+    .ui.hidden.divider
     h1.ui.header.horizontal.divider Cross Browser Example 
+    .ui.hidden.divider
 
-    .ui.p.
-        Underlying #[a(href="https://github.com/aktos-io/aktos-dcs-node") aktos-dcs]
-        library can also be used by 3rd party applications, by simply including 
-        the bundle with #[code &lt;script&gt;...&lt;/script&gt;] tags. 
+    .ui.big.message(style="padding: 150px auto")
+        .ui.p(style="font-size: 1.2em; margin: 50px;").
+            Underlying #[a(href="https://github.com/aktos-io/aktos-dcs-node") aktos-dcs-node]
+            library can also be used by 3rd party web applications.
+            
+        .ui.p(style="margin: 50px;").
+            Simply include the 
+            #[a(href="https://github.com/aktos-io/aktos-dcs-node/tree/dev/dist/dcs.js") dcs.js] 
+            with #[code &lt;script&gt;...&lt;/script&gt;] tags. 
         
-    h3.ui.header Example
+    h2.ui.header.horizontal Example
     .ui.p See the #[a(href=playground): .ui.label.green.large Playground example]
     .ui.hidden.divider
     .ui.p 
         img.ui.image(src=screencast)
+    
     
