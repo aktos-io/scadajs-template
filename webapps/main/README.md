@@ -24,6 +24,8 @@
 
 * `dep.ls`: If exists, it is compiled into `js/dep.js`. This is intended to be used for non critical codes (like [async components](https://github.com/ceremcem/ractive-synchronizer)) to be loaded after first page load. Developer is responsible for handling this script, no action is taken automatically. It is included by `app.ls` in this example.
 
+* `*.css`: If any CSS files exist, they will be concatenated into `css/vendor2.css`.
+
 ### App Specific Layout
 
 Following files are optional and included directly or indirectly by above required and optional files:
