@@ -18,13 +18,15 @@ try
             dcsLive: ->
                 # Let Ractive complete rendering before fetching any other dependencies
                 simulation = 10_000ms
-                PNotify.success do
+                new PNotify.success do
                     title: "Simulating Delay"
                     text: "Simulating #{simulation/1000} seconds of delay..."
+                    addClass: 'nonblock'
 
-                info = PNotify.notice do
+                info = new PNotify.notice do
                     text: "Fetching dependencies..."
                     hide: no
+                    addClass: 'nonblock'
 
                 start = Date.now!
                 <~ sleep simulation
@@ -33,6 +35,7 @@ try
                 elapsed = (Date.now! - start) / 1000
                 PNotify.info do
                     text: "Dependencies are loaded in #{oneDecimal elapsed} s"
+                    addClass: 'nonblock'
 
                 # send signal to Async Synchronizers
                 @set "@shared.deps", {_all: yes}, {+deep}

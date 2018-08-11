@@ -17,19 +17,23 @@ router(offset="50")
 - var scadajsAddr = gh + "/scada.js"
 - var issues = sourceAddr + "/issues"
 
+
 +unless('hideTopMenu')
     .ui.fixed.inverted.menu
         a.inverted.green.item(href="#/") Home 
-        a.inverted.green.item(href="#/page2") Page 2
-        +if('able("scene.hello.**")')
-            a.inverted.orange.item(slide-in-out href="#/hello") Hello
-        a.inverted.red.item(href="#/pagefoo") Not Exist    
-        a.inverted.yellow.item(href="#/hello2") Unauthorized
-        a.item(href="#/fullwindow") Full Window
-        
+        .ui.dropdown.item(as-dropdown)
+            | Basic 
+            icon.dropdown  
+            .menu 
+                a.inverted.green.item(href="#/page2") Page 2
+                +if('able("scene.hello.**")')
+                    a.inverted.orange.item(slide-in-out href="#/hello") Hello
+                a.inverted.red.item(href="#/pagefoo") Not Exist    
+                a.inverted.yellow.item(href="#/hello2") Unauthorized
+                a.item(href="#/fullwindow") Full Window
         // Include Showcase menu
         include ./showcase/menu.pug 
-        
+
 // Include Showcase scenes 
 include ./showcase/scenes.pug
 
@@ -113,7 +117,7 @@ scene(default public)
                         icon.lock Authorization #[a(href="#authorization"): icon.linkify]
                     
                 .ui.attached.raised.segment
-                    .ui.grid 
+                    .ui.stackable.grid
                         .eight.wide.column
                             .ui.form 
                                 .fields 
