@@ -32,11 +32,11 @@
     > Loading an application requires 3 stage:
     >  * First response (should be < 0.5 second)
     >  * Core application (should be < 3 second)
-    >  * Additional dependencies (will be loaded incrementally)
-    > In order to achieve these goals, the webapp is split into app.ls, app2.ls and app3.ls
-    > app.ls is the first application and is only responsible for displaying loading status.
-    > app2.ls is the core application which initialized `new Ractive`
-    > app3.ls is the additional dependencies, loaded lazily.
+    >  * Additional dependencies (will be loaded incrementally) <br />
+    > In order to achieve these goals, the webapp is split into `app.ls`, `app2.ls` and `app3.ls`.<br />
+    > app.ls is the first application and is only responsible for displaying loading messages and loading `app2.ls`.<br />
+    > app2.ls is the core application.<br />
+    > app3.ls is the additional dependencies, loaded when idle and/or on demand.
 
 * `*.css`: If any CSS files exist, they will be concatenated into `css/vendor2.css`.
 
