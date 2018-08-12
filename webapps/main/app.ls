@@ -12,5 +12,7 @@ try
     t2 = Date.now!
     loadingMessage "Getting app2.js (3/3) (#{duration t2 - appStart})"
     <~ getDep "js/app2.js"
+    t3 = Date.now!
+    loadingMessage "Rendering... (#{duration t3 - appStart})"
 catch
     loadingError (e.stack or e)
