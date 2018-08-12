@@ -33,10 +33,12 @@
     >  * First response (should be < 0.5 second)
     >  * Core application (should be < 3 second)
     >  * Additional dependencies (will be loaded incrementally) <br />
-    > In order to achieve these goals, the webapp is split into `app.ls`, `app2.ls` and `app3.ls`.<br />
-    >  * app.ls is the first application and is only responsible for displaying loading messages and loading `app2.ls`
-    >  * app2.ls is the core application.
-    >  * app3.ls is the additional dependencies, loaded when idle and/or on demand.
+    > <br />
+    > In order to achieve these goals, the webapp is split into `app*.ls`:
+    > 
+    >  * `app.ls` is responsible for displaying loading messages and loading dependencies as well as `app2.ls`
+    >  * `app2.ls` is the core application.
+    >  * `app3.ls` is the additional dependencies, loaded when idle and/or on demand.
 
 * `*.css`: If any CSS files exist, they will be concatenated into `css/vendor2.css`.
 
