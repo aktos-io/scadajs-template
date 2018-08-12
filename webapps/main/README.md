@@ -26,7 +26,7 @@
 
 ### Optional Files
 
-* `app[2,3,...].ls`: If exists, it is compiled into `js/app[2,3,...].js`. Mainly used for UX reasons. You are responsible for getting these scripts, no action is taken automatically.
+* `app[2,3,...].ls`: Compiled as `js/app[2,3,...].js`. Application is split for UX reasons. You are responsible for loading additional scripts, no action is taken automatically.
 
     > **Rationale** <br />
     > Loading an application requires 3 stage:
