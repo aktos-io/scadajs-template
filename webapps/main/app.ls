@@ -1,44 +1,16 @@
 try
-    require! 'aea/defaults'
-    require! 'components'
+    require! 'app/tools'
+    duration = (diff) ->
+        "#{oneDecimal diff / 1000}s"
 
-    loadingMessage "Getting vendor2.css"
+    t0 = Date.now!
+    loadingMessage "Getting vendor2.css (1/3) (#{duration t0 - appStart})"
     <~ getDep "css/vendor2.css"
-    loadingMessage "Getting vendor2.js"
+    t1 = Date.now!
+    loadingMessage "Getting vendor2.js (2/3) (#{duration t1 - appStart})"
     <~ getDep "js/vendor2.js"
-
-    new Ractive do
-        el: \body
-        template: RACTIVE_PREPARSE('app.pug')
-        #template: RACTIVE_PREPARSE('app.html') # if you have HTML template instead of Pug
-        data:
-            dataTableExample: require './showcase/data-table/settings' .settings
-
-        on:
-            dcsLive: ->
-                # Let Ractive complete rendering before fetching any other dependencies
-                simulation = 10_000ms
-                new PNotify.success do
-                    title: "Simulating Delay"
-                    text: "Simulating #{simulation/1000} seconds of delay..."
-                    addClass: 'nonblock'
-
-                info = new PNotify.notice do
-                    text: "Fetching dependencies..."
-                    hide: no
-                    addClass: 'nonblock'
-
-                start = Date.now!
-                <~ sleep simulation
-                <~ getDep "js/dep.js"
-                info.close!
-                elapsed = (Date.now! - start) / 1000
-                PNotify.info do
-                    text: "Dependencies are loaded in #{oneDecimal elapsed} s"
-                    addClass: 'nonblock'
-
-                # send signal to Async Synchronizers
-                @set "@shared.deps", {_all: yes}, {+deep}
-
+    t2 = Date.now!
+    loadingMessage "Getting app2.js (3/3) (#{duration t2 - appStart})"
+    <~ getDep "js/app2.js"
 catch
     loadingError (e.stack or e)
