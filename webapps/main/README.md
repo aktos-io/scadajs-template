@@ -32,9 +32,10 @@
     > Loading an application requires 3 stage:
     >  * First response (should be < 0.5 second)
     >  * Core application (should be < 3 second)
-    >  * Additional dependencies (will be loaded incrementally) <br />
-    > <br />
-    > In order to achieve these goals, the webapp is split into `app*.ls`:
+    >  * Additional dependencies (will be loaded incrementally)
+    >
+    >
+    > In order to achieve these goals, the webapp is split into `app.ls`, `app2.ls` and `app3.ls`:
     > 
     >  * `app.ls` is responsible for displaying loading messages and loading dependencies as well as `app2.ls`
     >  * `app2.ls` is the core application.
