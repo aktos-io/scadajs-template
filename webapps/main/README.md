@@ -34,6 +34,7 @@
     >  * Core application (should be < 3 second)
     >  * Additional dependencies (will be loaded incrementally)
     >
+    > <br />
     >
     > In order to achieve these goals, the webapp is split into `app.ls`, `app2.ls` and `app3.ls`:
     > 
