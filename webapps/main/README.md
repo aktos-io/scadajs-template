@@ -26,7 +26,7 @@
 
 ### Optional Files
 
-* `app[2,3,...].ls`: Compiled as `js/app[2,3,...].js`. Application is split for UX reasons. You are responsible for loading additional scripts, no action is taken automatically.
+* `app*.ls`: Compiled as `js/app*.js`. You are responsible for loading additional `app*.ls` scripts, no action is taken automatically.
 
     > **Rationale** <br />
     > Loading an application requires 3 stage:
@@ -36,9 +36,9 @@
     >
     > <br />
     >
-    > In order to achieve these goals, the webapp is split into `app.ls`, `app2.ls` and `app3.ls`:
+    > In order to achieve these goals, the webapp is split into `app*.ls`:
     > 
-    >  * `app.ls` is responsible for displaying loading messages and loading dependencies as well as `app2.ls`
+    >  * `app.ls` is executed by `index.html` and responsible for loading core application, its dependencies and displaying status messages during this process.
     >  * `app2.ls` is the core application.
     >  * `app3.ls` is the additional dependencies, loaded when idle and/or on demand.
 
