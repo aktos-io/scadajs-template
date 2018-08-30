@@ -2,7 +2,7 @@
 
 ### Required Files
 
-* `index.pug` (which is compiled to `index.html`) or `index.html` that is served as main html file to the user upon page request. Simplest form is:
+* `index.html` or `index.pug` (compiled to `index.html` automatically) is served on page request. Simplest form is:
 
     ```html
     <html>
@@ -16,17 +16,17 @@
     </html>
     ```
 
-* `app.ls` is the **main application**, compiled into `js/app.js` and is downloaded by `index.html`.
+* `app.ls` is the **main application**, compiled into `js/app.js` and is downloaded by `index.html` as seen above.
 
 ### Important Files
 
 * `js/vendor2.js` and `css/vendor2.css`: Files under `scada.js/vendor2/` are compiled to these outputs accordingly.
 
-  > Developer is responsible for loading these files. They are included by `app.ls` in this example.
+  > Developer is responsible for loading these files in runtime. They are loaded by `app.ls` in this example.
 
 ### Optional Files
 
-* `app*.ls`: Compiled as `js/app*.js`. You are responsible for loading additional `app*.ls` scripts, no action is taken automatically.
+* `app[n].ls`: Compiled into `js/app[n].js`. You are responsible for loading these additional `app` scripts, no action is taken automatically.
 
     > **Rationale** <br />
     > Loading an application requires 3 stage:
