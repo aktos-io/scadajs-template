@@ -4,7 +4,7 @@
 
 2. Install global `npm` dependencies (**as root/admin**):
 
-        npm install -g gulp livescript@1.4.0 node-gyp
+        npm install -g gulp livescript node-gyp
 
 
 3. Download the project template, install project dependencies:
