@@ -2,8 +2,9 @@
 
 1. Install [`NodeJs 8.x`](https://nodejs.org)
 
-2. Install global `npm` dependencies (**as root/admin**):
+2. Install global `npm` dependencies:
 
+        # run with root/admin privileges:
         npm install -g gulp livescript node-gyp
 
 
@@ -11,6 +12,7 @@
 
        git clone --recursive https://github.com/aktos-io/scadajs-template myproject
        cd myproject
+       # run as normal user:
        ./scada.js/install-modules.sh
 
 # Run
