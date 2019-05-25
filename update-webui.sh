@@ -5,4 +5,4 @@ $DIR/pull.sh
 cd scada.js
 [[ $1 = "--less" ]] || ./install-modules.sh
 gulp --webapp main --production
-npm run es5
+npm test
