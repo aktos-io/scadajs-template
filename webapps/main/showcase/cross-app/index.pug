@@ -6,15 +6,16 @@
     .ui.hidden.divider
 
     .ui.big.message(style="padding: 150px auto")
-        .ui.p(style="font-size: 1.2em; margin: 50px;").
-            Underlying #[a(href="https://github.com/aktos-io/aktos-dcs-node") aktos-dcs-node]
-            library can also be used by 3rd party web applications and/or desktop applications.
+        .ui.p(style="font-size: 1.2em; margin: 50px;")
+            :markdown-it
+                Underlying [aktos-dcs-node](https://github.com/aktos-io/aktos-dcs-node)
+                library can also be used by 3rd party web applications and/or desktop applications.
             
-        .ui.p(style="margin: 50px;").
-            Simply include the 
-            #[a(href="https://github.com/aktos-io/aktos-dcs-node/tree/dev/dist/dcs.js") dcs.js] 
-            with #[code &lt;script&gt;...&lt;/script&gt;] tags. 
-        
+        .ui.p(style="margin: 50px;")
+            :markdown-it
+                Simply include the [dcs.js](https://github.com/aktos-io/aktos-dcs-node/tree/dev/dist/dcs.js")
+                with `<script src="dcs.js"> ... </script>` tag in your app.
+                
     h2.ui.header.horizontal Example
     .ui.p See the #[a(href=playground): .ui.label.green.large Playground example]
     .ui.hidden.divider
