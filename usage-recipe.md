@@ -5,9 +5,10 @@ Step by step instructions to add a ScadaJS webapp to any project is as follows:
 #### 1. Install Global Dependencies
 
 1. Install [`NodeJs`](https://nodejs.org)
-2. Install global `npm` dependencies (**as root/admin**):
+2. Install global `npm` dependencies:
 
-        npm install -g gulp livescript@1.4.0
+        # run below command with root/admin privileges:
+        npm install -g gulp livescript
 
 #### 2. Add the ScadaJS Source Code
 
