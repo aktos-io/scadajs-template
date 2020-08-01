@@ -1,0 +1,212 @@
+
+//- 
+    Configuring Components via Partials
+    -----------------------------------
+
+    Make the configuration once inside a partial and then apply 
+    this partial {{#with}} custom variables. 
+
+
+    Usage: 
+
+        +with('{value: x1}')
+            +apply('thermometer')
+
+        or 
+
+        +apply('thermometer {value: x1}')
+
++partial('thermometer')
+    progress(value="{{value}}" 
+        max="100" 
+        height="{{ height || '200px' }}"
+        width="100px"
+        padding-top="8"
+        padding-bottom="17"
+        img="progress/thermometer2-progress.png"
+        background="progress/thermometer2-background.png")
+
++partial('fuel-truck')
+    progress(value="{{value}}" 
+        max="100" 
+        width="300px"
+        padding-bottom="50"
+        img="progress/fuel-truck-progress.png"
+        background="progress/fuel-truck-background.png")
+
++partial('battery')
+    progress.purple(value="{{value}}" 
+        max="{{ max || 100 }}" 
+        width="200px"
+        height="150px"
+        padding-bottom="14"
+        padding-top="10"
+        img="progress/battery-progress.png"
+        background="progress/battery-background.png")
+
++partial('hello')
+    progress(type="fan" value="{{x1}}" color="orange")
+
++partial('foo-fuel-truck')
+    +with('{value: x1}')
+        +apply('fuel-truck')
+
++partial('room1-thermometer')
+    +apply('thermometer {value: x1}')
+
++partial('room2-thermometer')
+    +with('{value: x2}')
+        +apply('thermometer')
+
+.ui.container
+    h3.ui.top.attached.header Description   
+    .ui.bottom.attached.segment 
+        p This is the demonstration of #[code scada.js/components]. App Version is: #[b {{ JSON.stringify(appVersion) }}]
+
+        p You can observe (and change) the possible demo variables here:
+
+        .ui.form 
+            .two.fields
+                .field
+                    .label x1
+                    input(value="{{x1}}" number)
+                .field
+                    .label x2
+                    input(value="{{x2}}" number)
+
+    h3.ui.top.attached.header Progress, continued
+    .ui.bottom.attached.segment 
+        .ui.equal.width.middle.aligned.grid
+            .row 
+                .column 
+                    slider(value="{{x1}}" vertical)                
+                .column 
+                    slider(value="{{x2}}" vertical)                
+
+                .column
+                    .ui.grid
+                        .column 
+                            .row
+                                checkbox(checked="{{hide.bubble}}") Hide
+                            .row
+                                +unless('hide.bubble')
+                                    progress(type="bubble" value="{{x1}}")
+                            .row
+                                io-label(format='##.# meter' value="{{x1}}")
+
+        
+                .column 
+                    progress(value="{{x1}}" fill="red")
+                        +partial('path') 
+                            include:stripSvg(getPath) ./heart.svg
+
+                .column 
+                    progress(value="{{x1}}" color="purple" thickness="10")
+                        +partial('path') 
+                            include:stripSvg(getPath) ./heart.svg
+
+                .column 
+                    +apply('hello')
+
+                .column
+                    progress(type="circle" value="{{x1}}" color="violet")
+
+                .column
+                    progress(value="{{x2}}")
+
+                .column
+                    //- path: start top-left, increases to right and bottom
+                    //- lower letters are relative movements.
+                    progress(type="vertical" value="{{x2}}" 
+                        path="M10 10l20 0l0 80l-20 0Z" color="yellowgreen")
+
+            //- demonstrate image driven progress bar here 
+            .row
+                .column 
+                    +apply("room1-thermometer")
+
+                .column
+                    +apply('room2-thermometer')
+
+                .six.wide.column
+                    +apply('foo-fuel-truck')
+
+                .column
+                    +with('{value: x1}')
+                        +apply('battery')
+
+                .column
+                    +apply('battery {max: 50, value: x2}')
+
+    h3.ui.top.attached.header Drawing Area 
+    .ui.bottom.attached.segment 
+        drawing-area 
+            widget(x="100px" y="100px")
+                +with('{height: "100px"}')
+                    +apply('room1-thermometer')
+
+            widget(x="300px" y="300px")
+                +apply('hello')
+
+            widget(x="200px" y="100px")
+                label(format='##.# meter' value="{{progress.one.curr}}")
+                    
+            widget(x="400px" y="200px" width="250px")
+                slider(value="{{x1}}")
+
+            widget(x="420px" y="40px")
+                overlap(width="100px") 
+                    img(src="progress/truck.png")
+                    +if('showmyoverlay1')
+                        img(src="progress/truck-tanker.png")
+
+            widget(x="580px" y="40px")
+                checkbox.red(checked="{{showmyoverlay1}}") show/hide red tanker
+                
+            widget(x="580px" y="350px")
+                +apply('foo-fuel-truck')
+
+    h3.ui.top.attached.header Slider and Progress
+    .ui.bottom.attached.segment 
+        p Possible attributes: vertical, height, direction
+
+        slider(value="{{x1}}")
+        .ui.grid 
+            .two.wide.column
+                slider(value="{{x1}}" vertical)
+
+            .two.wide.column 
+                slider(value="{{x1}}" value2="{{x2}}" vertical)
+
+            .twelve.wide.column 
+                ui-progress.green(min="0" max="100" value="{{x1}}")
+                    .label {{value}}/{{max}} on lower side
+
+                ui-progress.red(min="0" max="100" value="{{x2}}")
+                    .label {{value}}/{{max}} on upper side
+
+                slider(value="{{x2}}" direction="rtl")
+
+        slider(value="{{x1}}" value2="{{x2}}")                
+
+
+    h3.ui.top.attached.header Timeline
+    .ui.bottom.attached.segment 
+        p Useful for displaying historical logs. 
+        .timeline(style="background-color: teal; border-radius: 10px")
+            .container.left
+                .content
+                    h2 some header 1
+                    p some content
+
+            .container.right
+                .content
+                    h2 some header 2
+                    p some content
+            .container.left
+                .content
+                    h2 some header 3
+                    p some content
+
+
+

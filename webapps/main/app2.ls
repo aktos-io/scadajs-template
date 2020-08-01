@@ -1,6 +1,7 @@
 try
     require! 'aea/defaults'
     require! 'components'
+    require! './showcase/components'
     new Ractive do
         el: \body
         template: require('./app.pug') # or require('./app.html')
