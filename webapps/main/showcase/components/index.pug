@@ -18,11 +18,12 @@
 
 +partial('thermometer')
     progress(value="{{value}}" 
-        max="100" 
+        max="{{ max || 100 }}" 
+        min="{{ min || 0 }}"
         height="{{ height || '200px' }}"
         width="100px"
-        padding-top="8"
-        padding-bottom="17"
+        limit-top="0.92"
+        limit-bottom="0.17"
         img="progress/thermometer2-progress.png"
         background="progress/thermometer2-background.png"
         format="#.#°C"
@@ -30,9 +31,10 @@
 
 +partial('fuel-truck')
     progress(value="{{value}}" 
-        max="100" 
+        max="{{ max || 100 }}" 
         width="300px"
-        padding-bottom="50"
+        limit-top="0.9280"
+        limit-bottom="0.5290"
         img="progress/fuel-truck-progress.png"
         background="progress/fuel-truck-background.png"
         format="#.###m3"
@@ -43,20 +45,22 @@
         max="{{ max || 100 }}" 
         width="200px"
         height="150px"
-        padding-bottom="14"
-        padding-top="10"
+        limit-top="0.86"
+        limit-bottom="0.10"
         img="progress/battery-progress.png"
-        background="progress/battery-background.png")
+        background="progress/battery-background.png"
+        format="{{format || '#.#%'}}")
 
-+partial('hello')
-    progress(type="fan" value="{{x1}}" color="orange" format="#.#RPM")
++partial('tachometer')
+    progress(type="fan" value="{{x1 * 70}}" 
+        color="orange" format="#RPM" max="7000")
 
 +partial('foo-fuel-truck')
-    +with('{value: x1}')
+    +with('{value: x1 * 3.5, max: 350}')
         +apply('fuel-truck')
 
 +partial('room1-thermometer')
-    +apply('thermometer {value: x1}')
+    +apply('thermometer {value: 2*(x1 - 20), max: 150, min: -40}')
 
 +partial('room2-thermometer')
     +with('{value: x2}')
@@ -112,7 +116,7 @@
                             include:stripSvg(getPath) ./heart.svg
 
                 .column 
-                    +apply('hello')
+                    +apply('tachometer')
 
                 .column
                     code left-hand unit
@@ -133,7 +137,7 @@
             //- demonstrate image driven progress bar here 
             .row
                 .column 
-                    code label-background
+                    p #[code max] and #[code min] values are overridden
                     +apply("room1-thermometer")
 
                 .column
@@ -147,8 +151,8 @@
                         +apply('battery')
 
                 .column
-                    p #[code max] value is overridden by #[code 50]
-                    +apply('battery {max: 50, value: x2}')
+                    +with('{value: x2 * 7.68, format: "#.#Wh", max: 768}')
+                        +apply('battery')
 
     h3.ui.top.attached.header Drawing Area 
     .ui.bottom.attached.segment 
