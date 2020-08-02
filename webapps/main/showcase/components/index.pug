@@ -24,7 +24,9 @@
         padding-top="8"
         padding-bottom="17"
         img="progress/thermometer2-progress.png"
-        background="progress/thermometer2-background.png")
+        background="progress/thermometer2-background.png"
+        format="#.#°C"
+        label-background="0.8")
 
 +partial('fuel-truck')
     progress(value="{{value}}" 
@@ -32,7 +34,9 @@
         width="300px"
         padding-bottom="50"
         img="progress/fuel-truck-progress.png"
-        background="progress/fuel-truck-background.png")
+        background="progress/fuel-truck-background.png"
+        format="#.###m3"
+        label-background)
 
 +partial('battery')
     progress.purple(value="{{value}}" 
@@ -45,7 +49,7 @@
         background="progress/battery-background.png")
 
 +partial('hello')
-    progress(type="fan" value="{{x1}}" color="orange")
+    progress(type="fan" value="{{x1}}" color="orange" format="#.#RPM")
 
 +partial('foo-fuel-truck')
     +with('{value: x1}')
@@ -68,32 +72,32 @@
         .ui.form 
             .two.fields
                 .field
-                    .label x1
+                    .label: code \{{ x1 }}
                     input(value="{{x1}}" number)
                 .field
-                    .label x2
+                    .label: code \{{ x2 }}
                     input(value="{{x2}}" number)
 
     h3.ui.top.attached.header Progress, continued
     .ui.bottom.attached.segment 
-        .ui.equal.width.middle.aligned.grid
-
+        .ui.equal.width.middle.aligned.doubling.five.column.grid
             .row 
                 .column 
+                    code \{{x1}}
                     slider(value="{{x1}}" vertical)                
                 .column 
+                    code \{{x2}}
                     slider(value="{{x2}}" vertical)                
 
-                .column
-                    .ui.grid
-                        .column 
-                            .row
-                                checkbox(checked="{{hide.bubble}}") Hide
-                            .row
-                                +unless('hide.bubble')
-                                    progress(type="bubble" value="{{x1}}")
-                            .row
-                                io-label(format='##.# meter' value="{{x1}}")
+                .center.aligned.column
+                    .ui.warning.message
+                        .content 
+                            | Bubble uses high CPU!
+                            checkbox(checked="{{hide.bubble}}") Hide
+
+                            +unless('hide.bubble')
+                                progress(type="bubble" value="{{x1}}" format="#.# m" 
+                                    label-background="0.9")
 
         
                 .column 
@@ -102,6 +106,7 @@
                             include:stripSvg(getPath) ./heart.svg
 
                 .column 
+                    p custom #[code path] from file 
                     progress(value="{{x1}}" color="purple" thickness="10")
                         +partial('path') 
                             include:stripSvg(getPath) ./heart.svg
@@ -110,26 +115,31 @@
                     +apply('hello')
 
                 .column
-                    progress(type="circle" value="{{x1}}" color="violet")
+                    code left-hand unit
+                    progress(type="circle" value="{{x1}}" color="violet" format="×#.#")
 
                 .column
-                    progress(value="{{x2}}")
+                    //- line 
+                    code label="false"
+                    progress(value="{{x2}}" label="false")
 
                 .column
                     //- path: start top-left, increases to right and bottom
                     //- lower letters are relative movements.
+                    p custom #[code path]
                     progress(type="vertical" value="{{x2}}" 
                         path="M10 10l20 0l0 80l-20 0Z" color="yellowgreen")
 
             //- demonstrate image driven progress bar here 
             .row
                 .column 
+                    code label-background
                     +apply("room1-thermometer")
 
                 .column
                     +apply('room2-thermometer')
 
-                .six.wide.column
+                .five.wide.column
                     +apply('foo-fuel-truck')
 
                 .column
@@ -137,6 +147,7 @@
                         +apply('battery')
 
                 .column
+                    p #[code max] value is overridden by #[code 50]
                     +apply('battery {max: 50, value: x2}')
 
     h3.ui.top.attached.header Drawing Area 
