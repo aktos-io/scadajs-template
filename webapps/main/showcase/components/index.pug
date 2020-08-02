@@ -77,6 +77,7 @@
     h3.ui.top.attached.header Progress, continued
     .ui.bottom.attached.segment 
         .ui.equal.width.middle.aligned.grid
+
             .row 
                 .column 
                     slider(value="{{x1}}" vertical)                
@@ -156,9 +157,9 @@
 
             widget(x="420px" y="40px")
                 overlap(width="100px") 
-                    img(src="progress/truck.png")
+                    img(src="progress/fuel-truck-background.png")
                     +if('showmyoverlay1')
-                        img(src="progress/truck-tanker.png")
+                        img(src="progress/fuel-truck-progress.png")
 
             widget(x="580px" y="40px")
                 checkbox.red(checked="{{showmyoverlay1}}") show/hide red tanker
