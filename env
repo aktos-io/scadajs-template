@@ -1,6 +1,0 @@
-#!/bin/bash
-[[ -z $SCADAJS_1_ENV ]] && { echo "Please set SCADAJS_1_ENV variable first."; exit 1; }
-
-echo "Using nodeenv at ${SCADAJS_1_ENV}"
-bash --rcfile <(echo ". ~/.bashrc; . ${SCADAJS_1_ENV}/bin/activate")
-
