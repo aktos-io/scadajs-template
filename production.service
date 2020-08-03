@@ -1,11 +1,10 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . $DIR/scada.js/tools/service-runner/tmux-launch
-launch-service $(calc-session-name "$0")
-
+sname=$(calc-session-name "$0")
+tmux_set_venv $sname $DIR/scada.js/nodeenv
+launch-service $sname
 
 # run commands in tmux session
-# webapp might be built externally
-#run-in-tmux "cd scada.js" "gulp --webapp main --production" 
 run-in-tmux "cd servers" "./run-ls io-server.ls"
-run-in-tmux "cd servers" './run-ls webserver.ls'
+run-in-tmux "cd servers" './run-ls webserver.ls --production'
