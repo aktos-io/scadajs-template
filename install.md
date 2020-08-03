@@ -1,6 +1,6 @@
 # Install
 
-Follow the instructions in `./scada.js/doc/using-virtual-environment.md`.
+Follow the instructions in [`scada.js/doc/using-virtual-environment.md`](https://github.com/aktos-io/scada.js/blob/master/doc/using-virtual-environment.md).
 
 # Run
 
