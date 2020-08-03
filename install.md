@@ -1,19 +1,6 @@
 # Install
 
-1. Install [`NodeJs 8.x`](https://nodejs.org)
-
-2. Install global `npm` dependencies:
-
-        # run with root/admin privileges:
-        npm install -g gulp livescript node-gyp
-
-
-3. Download the project template, install project dependencies:
-
-       git clone --recursive https://github.com/aktos-io/scadajs-template myproject
-       cd myproject
-       # run as normal user:
-       ./scada.js/install-modules.sh
+Follow the instructions in `./scada.js/doc/using-virtual-environment.md`.
 
 # Run
 
