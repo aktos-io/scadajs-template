@@ -4,7 +4,7 @@ Step by step instructions to add a ScadaJS webapp to any project is as follows:
 
 #### 1. Create environment 
 
-Follow the instructions in `./scada.js/doc/using-virtual-environment.md`.
+Follow the instructions in [`scada.js/doc/using-virtual-environment.md`](https://github.com/aktos-io/scada.js/blob/master/doc/using-virtual-environment.md).
 
 #### 2. Create `your-webapp`
 
