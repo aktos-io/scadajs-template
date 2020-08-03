@@ -6,7 +6,7 @@ This is the bare minimum template project to easily get up and running with [Sca
 
 See this project live on https://aktos.io/st (scadajs-template).
 
-# Creating a ScadaJS Webapp
+# Creating Webapp
 
-1. Either create a ScadaJS webapp from scratch (see [instructions](./usage-recipe.md))
-2. Or clone this template and edit according to your needs (see [install](./install.md)).
+1. Create from scratch: [./usage-recipe.md](./usage-recipe.md).
+2. Copy and edit `this` template: [./install.md](./install.md).
