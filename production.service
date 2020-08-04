@@ -2,7 +2,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . $DIR/scada.js/tools/service-runner/tmux-launch
 sname=$(calc-session-name "$0")
-. $DIR/venv.sh
+tmux_set_venv $sname ${SCADAJS_1_ENV:-"$DIR/scada.js/nodeenv"}
 launch-service $sname
 
 # run commands in tmux session
