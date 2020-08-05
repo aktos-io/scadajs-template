@@ -6,3 +6,7 @@ main-dev:
 
 main-production:
 	cd scada.js && make production APP=main
+
+update:
+	git pull
+	git submodule update --recursive --init
