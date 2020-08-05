@@ -1,5 +1,6 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+HEADLESS=false
 . $DIR/scada.js/tools/service-runner/tmux-launch
 sname=$(calc-session-name "$0")
 tmux_set_venv $sname ${SCADAJS_1_ENV:-"$DIR/scada.js/nodeenv"}
@@ -12,6 +13,9 @@ if [[ ! -e $DIR/editor ]]; then
         ln -s `which atom` editor
     fi
 fi
+
+run-in-tmux "echo hello"
+exit
 
 # run commands in tmux session
 run-in-tmux 'xdg-open .' './editor .'
