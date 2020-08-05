@@ -7,10 +7,10 @@ require! '../config': {webserver-port, dcs-port}
 require! 'yargs': {argv}
 
 if argv.development
-    console.log "Using development site-root"
+    console.log "Using development site-root."
     site-root = "../scada.js/build/main"
 else if argv.production
-    console.log "Using production site-root"
+    console.log "Using production site-root."
     site-root = "../scada.js/release/main"
 else
     console.error "Use a --development or --production argument."
