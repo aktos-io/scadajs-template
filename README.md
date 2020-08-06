@@ -8,5 +8,8 @@ See this project live on https://aktos.io/st (scadajs-template).
 
 # Creating Webapp
 
-1. Create from scratch: [./usage-recipe.md](./usage-recipe.md).
-2. Copy and edit `this` template: [./install.md](./install.md).
+A) Either create a project from scratch: [./usage-recipe.md](./usage-recipe.md).
+
+- or
+
+B) Copy and edit `this` template according to your needs: [./install.md](./install.md).
