@@ -4,19 +4,10 @@ HEADLESS=false
 . $DIR/scada.js/tools/service-runner/tmux-launch
 launch-service $(calc-session-name "$0")
 
-if [[ ! -e $DIR/editor ]]; then
-    if hash subl; then
-        ln -s `which subl` editor
-    elif hash atom; then
-        ln -s `which atom` editor
-    fi
-fi
-
 venv="${SCADAJS_1_ENV:-"$DIR/scada.js/nodeenv"}"
 run-in-tmux "tmux setenv 'VIRTUAL_ENV' $venv && exit"
 
 # run commands in tmux session
-run-in-tmux 'xdg-open .' './editor .'
 run-in-tmux "cd scada.js" "export APP=main" "make development"
 run-in-tmux "cd servers" "./run-ls io-server.ls"
 run-in-tmux "cd servers" './run-ls webserver.ls --development'
