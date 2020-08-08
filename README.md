@@ -4,7 +4,7 @@ This is the bare minimum template project to easily get up and running with [Sca
 
 # Live Demo 
 
-See this project live on https://aktos.io/st (/**s**cadajs **t**emplate).
+See this project live on https://aktos.io/st.
 
 # Development
 
