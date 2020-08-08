@@ -4,13 +4,13 @@ This is the bare minimum template project to easily get up and running with [Sca
 
 # Live Demo 
 
-See this project live on https://aktos.io/st (scadajs-template).
+See this project live on https://aktos.io/st (/**s**cadajs **t**emplate).
 
 # Development
 
 ### 1. Install dependencies
 
-1. Create virtual environment: scada.js/doc/using-virtual-environment.md
+1. Create virtual environment: [using-virtual-environment.md](https://github.com/aktos-io/scada.js/blob/master/doc/using-virtual-environment.md)
 2. `make install-deps`
 
 ### 2. Create a Webapp
