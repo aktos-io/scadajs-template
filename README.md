@@ -30,3 +30,7 @@ B) Copy and edit `this` template according to your needs.
 ### 4. Release 
 
 1. `make production`. 
+2. Stop your development server (if it's running).
+3. Run: `./production.service` (look into the script, it's self documentary)
+4. Go to http://localhost:4011
+
