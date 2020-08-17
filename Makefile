@@ -11,3 +11,5 @@ update:
 	git pull
 	git submodule update --recursive --init
 
+update-ui:
+	cd scada.js/release/main; git pull
