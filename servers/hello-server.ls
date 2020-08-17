@@ -4,7 +4,6 @@ require! 'fancy-log': log
 
 new class Hello extends Actor
     action: ->
-        #families = read-xml "./stm-db/mcu/families.xml"
         @on-topic \@hello-server.*, (msg) ~>
             log "Received", msg.data, "from user."
             delay = 1500ms
