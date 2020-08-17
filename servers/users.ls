@@ -4,9 +4,11 @@ export users =
         passwd-hash: hash-passwd "public"
         routes:
             \@mydevice.hello.**
+            \@hello-server.hi
         permissions:
             'something'
             'something-else'
+
 
     'mydevice':
         passwd-hash: hash-passwd "1234"
@@ -24,3 +26,7 @@ export users =
         passwd-hash: hash-passwd "1234"
         permissions:
             \scene.hello.**
+
+    'hello-server':
+        passwd-hash: hash-passwd "1234"
+
