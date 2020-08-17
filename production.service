@@ -12,5 +12,5 @@ tmux setenv -t $sname 'VIRTUAL_ENV' $SCADAJS_VENV
 # run commands in tmux session
 run-in-tmux "cd servers" "./run-ls io-server.ls"
 run-in-tmux "cd servers" './run-ls webserver.ls --production'
-run-in-tmux "cd server" "./run-ls hello-server.ls"
+run-in-tmux "cd servers" "./run-ls hello-server.ls"
 
