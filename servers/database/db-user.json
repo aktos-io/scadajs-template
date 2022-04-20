@@ -1,0 +1,7 @@
+{
+    "_id": "org.couchdb.user:scadajs-template-user",
+    "name": "scadajs-template-user",
+    "type": "user",
+    "roles": [],
+    "password": "mystrongpassword"
+}

@@ -1,0 +1,19 @@
+.ui.container
+.ui.hidden.divider
+h1.ui.header.horizontal.divider CouchDB Operations 
+.ui.hidden.divider
+
++iff('! able("admin")')
+    .ui.yellow.message 
+        h3.ui.header Login required 
+        .content
+            :markdown-it
+                You need to [log in](#/#authorization) in order to see the showcase/Admin menu item.
+                
+                \
+                Username: admin \
+                Password: admin
++else
+    //- we have admin privileges
+    ddoc-editor(db="{{designDb}}")
++endif
