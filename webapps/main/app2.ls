@@ -2,16 +2,17 @@ try
     require! 'aea/defaults'
     require! 'components'
     require! './showcase/components'
+    require! './showcase/database'
     new Ractive do
         el: \body
-        template: require('./app.pug') # or require('./app.html')
+        template: require('./app2.pug') # or require('./app.html')
         data:
             dataTableExample: require './showcase/data-table/settings' .settings
             appVersion: require('app-version.json')
         on:
             dcsLive: ->
                 # Let Ractive complete rendering before fetching any other dependencies
-                simulation = 10_000ms 
+                simulation = 3_000ms 
                 new PNotify.success do
                     title: "Simulating Delay"
                     text: "Simulating #{simulation/1000} seconds of delay..."
