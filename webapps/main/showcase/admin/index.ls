@@ -1,6 +1,6 @@
 require! 'dcs/browser': {CouchDcsClient}
 
-Ractive.components["database"] = Ractive.extend do
+Ractive.components["admin"] = Ractive.extend do
     template: require('./index.pug')
     isolated: no
     data: ->

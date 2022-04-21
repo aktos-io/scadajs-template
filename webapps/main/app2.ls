@@ -2,12 +2,12 @@ try
     require! 'aea/defaults'
     require! 'components'
     require! './showcase/components'
-    require! './showcase/database'
+    require! './showcase/admin'
     new Ractive do
         el: \body
         template: require('./app2.pug') # or require('./app.html')
         data:
-            dataTableExample: require './showcase/data-table/settings' .settings
+            dataTableExample: require './showcase/data-table-simulation/settings' .settings
             appVersion: require('app-version.json')
         on:
             dcsLive: ->
