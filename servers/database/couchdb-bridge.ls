@@ -10,6 +10,10 @@ new DcsTcpClient port: dcs-port .login do
     password: backend-passwd
 
 # Create a bridge between this service and CouchDB
+# ------------------------------------------------
+# See https://github.com/aktos-io/aktos-dcs-node/tree/master/services/couch-dcs
+# for additional events
+#
 new CouchDcsServer do
     url: db-url
     database: \scadajs-template
@@ -17,3 +21,4 @@ new CouchDcsServer do
         name: db-user.name
         password: db-user.password
     subscribe: '@db-proxy' 
+
