@@ -1,0 +1,14 @@
+td 
+    btn.mini(
+        on-click="openRow" 
+        class="{{#if isLastClicked(.id)}}orange{{/if}}"
+        ) {{.id}}
+
++if('colNames.1')
+    td
+        | {{.value.subject}}
+
+
+//- if current row's background-color will be set, following line can be used            
+
+    | {{@context.set('.bgcolor', 'red') && ''}}

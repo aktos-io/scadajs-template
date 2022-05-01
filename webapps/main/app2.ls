@@ -1,4 +1,5 @@
 try
+    require! 'dcs/browser': {CouchDcsClient}
     require! 'aea/defaults'
     require! 'components'
     require! './showcase/components'
@@ -8,7 +9,10 @@ try
         template: require('./app2.pug') # or require('./app.html')
         data:
             dataTableExample: require './showcase/data-table-simulation/settings' .settings
+            myDataTable: require './showcase/data-table/settings' .settings
             appVersion: require('app-version.json')
+            db: new CouchDcsClient route: "@db-proxy"
+
         on:
             dcsLive: ->
                 # Let Ractive complete rendering before fetching any other dependencies
@@ -34,6 +38,7 @@ try
 
                 # send signal to Async Synchronizers
                 @set "@shared.deps", {_all: yes}, {+deep}
+
 
 catch
     loadingError (e.stack or e)

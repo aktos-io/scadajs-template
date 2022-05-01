@@ -1,0 +1,31 @@
+.ui.container
+    .ui.hidden.divider
+    h1.ui.header.horizontal.divider #[code data-table] example
+    .ui.hidden.divider
+
+    .ui.p You can save and retrive real data to/from database 
+
+    data-table.unstackable(settings="{{myDataTable}}" db="{{db}}")    
+        +partial('header')
+            .ui.buttons 
+                ack-button.green(on-click="addNew")
+                    icon.plus New
+
+                ack-button.olive(on-click="kickChanges" kick  timeout="15000") Refresh
+
+        //- Column names (table.header) is defined in data-table.settings.col-names field.
+
+            
+        +partial('row')
+            include ./table-row.pug
+
+        +partial('viewForm')
+            include ./view-form.pug
+
+        +partial('editForm')
+            include ./edit-form.pug
+            
+        +partial('footer')
+            .ui.p This is the footer content
+            //-
+                debug-obj(obj="{{tableview}}" title="tableview" public)

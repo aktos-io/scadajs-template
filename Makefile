@@ -15,8 +15,8 @@ install-deps:
 development:
 	cd scada.js && make development
 
-production:
-	cd scada.js && make production
+release:
+	cd scada.js && make release
 
 update:
 	git pull
