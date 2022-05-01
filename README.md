@@ -21,13 +21,17 @@ A) Either create a webapp from scratch: [./creating-webapp.md](./creating-webapp
 
 B) Copy and edit `this` template according to your needs.
 
-### 3. Build 
+### 3. Prepare your database 
+
+See: [prepare-database.md](./prepare-database.md).
+
+### 4. Build 
 
 1. `make development` will start necessary services. 
 2. Use your favourite text editor for editing files. 
 3. Go to http://localhost:4011
 
-### 4. Release 
+### 5. Release 
 
 1. `make release`. 
 2. Stop your development server (if it's running).
