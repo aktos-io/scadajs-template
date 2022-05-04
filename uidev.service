@@ -14,3 +14,4 @@ run-in-tmux "cd scada.js" "export APP=main" "make development"
 run-in-tmux "cd servers" "./run-ls io-server.ls"
 run-in-tmux "cd servers" './run-ls webserver.ls --development'
 run-in-tmux "cd servers" "./run-ls hello-server.ls"
+run-in-tmux "cd servers" "./run-ls database/couchdb-bridge.ls"
