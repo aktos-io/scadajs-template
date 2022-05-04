@@ -1,6 +1,5 @@
 require! 'prelude-ls': {filter}
 
-
 export settings =
     # REQUIRED
     name: "issues"
@@ -26,7 +25,7 @@ export settings =
 
     # REQUIRED
     # when data table first renders, this function is run:
-    on-init: (proceed) ->
+    on-init: ->>
         # Register the handler to update all table view when a change is 
         # occurred in `mydocument/mydocument` view:
         @get('db').on-topic "@db-proxy.change.view.mydocument/mydocument", ~>
@@ -34,27 +33,25 @@ export settings =
 
         # Fetch tableview data upon init:
         @fire \kickChanges
-        proceed!
 
     # OPTIONAL
     /* Executed when a row is about to open. */
-    on-create-view: (row, proceed) ->
+    on-create-view: (row) ->>
         if row
             /* Editing to an existing document */
             # fetch the document
-            err, res <~ @get \db .get row.id
-            proceed err, curr=res
+            curr = await @get \db .get row.id
         else
             /* Adding a new row */
-            proceed err=null, curr=
+            curr =
                 _id: 'mydocument-####'
                 content: ""
+        return curr 
 
     # Required unless readonly
-    save: (ctx, curr, proceed) ->
-        err, res <~ @get('db').put curr
+    save: (ctx, curr) ->> 
+        await @get('db').put curr
         @update \curr
-        proceed err
 
     # OPTIONAL
     # Just like Ractive.data
