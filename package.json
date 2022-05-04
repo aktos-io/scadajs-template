@@ -1,0 +1,19 @@
+{
+  "name": "scadajs-template",
+  "version": "1.0.0",
+  "description": "This is the bare minimum template project to easily get up and running with [ScadaJS](https://github.com/aktos-io/scada.js).",
+  "main": "\"\"",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aktos-io/scadajs-template.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aktos-io/scadajs-template/issues"
+  },
+  "homepage": "https://github.com/aktos-io/scadajs-template#readme"
+}
