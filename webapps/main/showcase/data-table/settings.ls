@@ -40,18 +40,17 @@ export settings =
         if row
             /* Editing to an existing document */
             # fetch the document
-            curr = await @get \db .get row.id
-        else
-            /* Adding a new row */
-            curr =
-                _id: 'mydocument-####'
-                content: ""
-        return curr 
+            return await @get \db .get row.id
+
+        /* Adding a new row */
+        return do
+            _id: 'mydocument-####'
+            content: ""
 
     # Required unless readonly
     save: (ctx, curr) ->> 
         await @get('db').put curr
-        @update \curr
+        await @update \curr
 
     # OPTIONAL
     # Just like Ractive.data

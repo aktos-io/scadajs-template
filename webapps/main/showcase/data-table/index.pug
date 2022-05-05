@@ -3,7 +3,13 @@
     h1.ui.header.horizontal.divider #[code data-table] example
     .ui.hidden.divider
 
-    .ui.p You can save and retrive real data to/from database 
+    .ui.message.info
+        .p You can save and retrieve real data to/from database. 
+
+    +if('isUnable("admin")')
+        .ui.message.warning
+            .header NEED PERMISSION
+            .p You need to be logged in as #[code admin].
 
     data-table.unstackable(settings="{{myDataTable}}" db="{{db}}")    
         +partial('header')

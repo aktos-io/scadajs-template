@@ -1,9 +1,16 @@
 require! 'dcs/src/auth-helpers': {hash-passwd}
 require! '../config': {backend-passwd}
 
-# A user named "myuser" will have an access to `@myuser` route by default.
-# Use "groups" field to inherit routes and permissions from those users
-# "permissions" field is used from within the GUI, by using `able("the_permission")` function.
+/*
+
+* A user named "myuser" will have an access to `@myuser` route by default.
+* Use "groups" field to inherit routes and permissions from those users
+* "permissions" field is used from within the GUI, by using `isAble("the_permission")` function.
+* "routes" field is used to determine if user has the route. Check that by `Ractive.hasRoute("a-route")` function.
+
+  See scada.js/components/aktos-dcs for more. 
+
+*/
 
 export users =
     'public':
