@@ -8,10 +8,12 @@ See this project live on https://aktos.io/st.
 
 # Development
 
-### 1. Install dependencies
+### 1. Clone and install dependencies
 
-1. Create virtual environment: [using-virtual-environment.md](https://github.com/aktos-io/scada.js/blob/master/doc/using-virtual-environment.md)
-2. `make install-deps`
+1. `git clone --recursive https://github.com/aktos-io/scadajs-template`
+2. `cd scadajs-template`
+3. Optional: Create virtual environment: [using-virtual-environment.md](https://github.com/aktos-io/scada.js/blob/master/doc/using-virtual-environment.md)
+4. `make install-deps` (Windows users: Install `make` first: https://gist.github.com/evanwill/0207876c3243bbb6863e65ec5dc3f058#make)
 
 ### 2. Create a Webapp
 
