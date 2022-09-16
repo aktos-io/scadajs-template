@@ -8,32 +8,27 @@ See this project live on https://aktos.io/st.
 
 # Development
 
-### 1. Clone and install dependencies
+### 1. Clone this repo and install its dependencies
 
-1. `git clone --recursive https://github.com/aktos-io/scadajs-template`
-2. `cd scadajs-template`
-3. Optional: Create virtual environment: [using-virtual-environment.md](https://github.com/aktos-io/scada.js/blob/master/doc/using-virtual-environment.md)
-4. `make install-deps` (Windows users: Install `make` first: https://gist.github.com/evanwill/0207876c3243bbb6863e65ec5dc3f058#make)
+> Windows users: Follow [these instructions](https://github.com/aktos-io/scada.js/blob/1f63386332ea55f911ea687c9e8c7080c0f6c904/doc/on-windows/README.md) first.
 
-### 2. Create a Webapp
+1. Open a terminal window (Windows users: right click, click "Open MSYS2 here")
+2. `git clone --recursive https://github.com/aktos-io/scadajs-template`
+3. `cd scadajs-template`
+4. Create a virtual environment: `make create-virtual-env`
+5. `make install-deps`
 
-A) Either create a webapp from scratch: [./creating-webapp.md](./creating-webapp.md).
-
-- or
-
-B) Copy and edit `this` template according to your needs.
-
-### 3. Prepare your database 
-
-See: [prepare-database.md](./prepare-database.md).
-
-### 4. Build 
+### 2. Build 
 
 1. `make development` will start necessary services. 
 2. Use your favourite text editor for editing files. 
 3. Go to http://localhost:4011
 
-### 5. Release 
+### 3. Prepare your database 
+
+This is optional (or you can do it later). See: [prepare-database.md](./prepare-database.md).
+
+### 4. Release 
 
 1. `make release`. 
 2. Stop your development server (if it's running).

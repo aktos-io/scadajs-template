@@ -2,3 +2,5 @@ node_modules
 sync-*.sh
 .directory
 _doc
+virtual-env-path.sh
+scadajs-venv
