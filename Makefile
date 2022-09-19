@@ -14,10 +14,10 @@ install-deps:
 	)
 
 development:
-	cd scada.js && make development
+	./uidev.service
 
 release:
-	cd scada.js && make release
+	source virtual-env-path.sh && source ./scada.js/venv && cd scada.js && make release
 
 update-src:
 	git pull
