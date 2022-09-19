@@ -17,7 +17,7 @@ development:
 	./uidev.service
 
 release:
-	source virtual-env-path.sh && source ./scada.js/venv && cd scada.js && make release
+	source virtual-env-path.sh && source ./scada.js/venv && cd scada.js && make release ES_CHECK=skip
 
 update-src:
 	git pull
