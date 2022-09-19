@@ -21,8 +21,8 @@ See this project live on https://aktos.io/st.
 ### 2. Build 
 
 1. `make development` will start necessary services. 
-2. Use your favourite text editor for editing files. 
-3. Go to http://localhost:4011
+2. Go to http://localhost:4011
+3. Use your favourite text editor for editing files. Use `Ctrl+b, n` and `Ctrl+b, p` to navigate between Tmux tabs. 
 
 ### 3. Prepare your database 
 
