@@ -31,7 +31,6 @@ This is optional (or you can do it later). See: [prepare-database.md](./prepare-
 ### 4. Release 
 
 1. `make release`. 
-2. Stop your development server (if it's running).
-3. Run: `./production.service` (look into the script, it's self documentary)
-4. Go to http://localhost:4011
+2. Run: `./production.service` (look into the script, it's self documentary)
+3. Go to http://localhost:4011
 
